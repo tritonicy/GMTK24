@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
                 moveLockTimeCounter = 0f;
                 isMoveLocked = false;
                 moveSpeed = runSpeed;
+                rb.drag = groundDrag;
             }
         }
 

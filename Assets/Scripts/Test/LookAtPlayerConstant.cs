@@ -6,9 +6,10 @@ using UnityEngine;
 public class LookAtPlayerConstant : MonoBehaviour
 {
 
-    [SerializeField] Transform PlayerTransform;
+    private Transform PlayerTransform;
 
     private void Start() {
+        PlayerTransform = FindObjectOfType<PlayerMovement>().gameObject.transform;
         this.transform.rotation = Quaternion.Euler(this.transform.rotation.x + 90f, this.transform.rotation.y,this.transform.rotation.z);
     }
     void Update()
@@ -19,6 +20,6 @@ public class LookAtPlayerConstant : MonoBehaviour
             transform.eulerAngles.y,
             transform.eulerAngles.z
 );
-        
+
     }
 }
