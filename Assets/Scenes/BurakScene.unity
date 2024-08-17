@@ -249,7 +249,7 @@ MonoBehaviour:
   dashDuration: 1
   moveLockTimer: 0.3
   isMoveLocked: 0
-  speedChangeFactor: 2000
+  speedChangeFactor: 10000
 --- !u!1 &298738259
 GameObject:
   m_ObjectHideFlags: 0
