@@ -7,7 +7,6 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] float sens;
     [SerializeField] public Transform orientation;
-
     private float xRotation;
     private float yRotation;
 

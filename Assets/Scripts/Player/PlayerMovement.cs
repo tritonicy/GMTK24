@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -56,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) {
             isMoveLocked = true;
-            isDashing = true;
             Dash();
         }
 
@@ -65,32 +65,16 @@ public class PlayerMovement : MonoBehaviour
             if(moveLockTimeCounter >= moveLockTimer) {
                 moveLockTimeCounter = 0f;
                 isMoveLocked = false;
-                desiredMoveSpeed = runSpeed;
+                moveSpeed = runSpeed;
             }
         }
 
-        isMoveSpeedChanged = lastDesiredMoveSpeed != desiredMoveSpeed;
-        if (isMoveSpeedChanged)
-        {
-            if (keepMomentum)
-            {
-                StopAllCoroutines();
-                StartCoroutine(SmoothlyLerpMoveSpeed(speedChangeFactor));
-            }
-            else{
-                StopAllCoroutines();
-                moveSpeed = desiredMoveSpeed;
-            }
-        }
-
-        lastDesiredMoveSpeed = desiredMoveSpeed;
     }
     private void FixedUpdate()
     {
         MovePlayer();
         SpeedControl();
         JumpFallControl();
-        // Debug.Log(new Vector3(rb.velocity.x, 0f, rb.velocity.z).magnitude);
     }
     private void GatherInput()
     {
@@ -126,11 +110,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void SpeedControl()
     {
-        Debug.Log(moveSpeed);
+        // movespeed yavas yavas degisirse (lerp) hiz siniri cok erken devreye giriyor o yuzden sorun oluyor.
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
+        
         if (flatVel.magnitude > moveSpeed * Time.deltaTime / 10)
-        {
+        {   
             Vector3 limitedvel = flatVel.normalized * moveSpeed * Time.deltaTime / 10;
             rb.velocity = new Vector3(limitedvel.x, rb.velocity.y, limitedvel.z);
         }
@@ -141,7 +125,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(this.transform.up * jumpForce, ForceMode.Impulse);
-        Debug.Log(++count);
     }
     private void JumpFallControl()
     {
@@ -161,12 +144,13 @@ public class PlayerMovement : MonoBehaviour
     Vector3 forceToApply;
     private void Dash() {
         keepMomentum = true;
+        isDashing = true;
         Vector3 lookDir = CalculateDirection(orientation);
-        desiredMoveSpeed = dashSpeed;
+        moveSpeed = dashSpeed;
 
         forceToApply = lookDir * dashForce + playerCam.up * upwardDashSpeed;
         
-        Invoke(nameof(DelayedForceApply), 0.0025f);
+        Invoke(nameof(DelayedForceApply), 0.025f);
         Invoke(nameof(ResetDash), dashDuration);
     }
 
@@ -196,19 +180,4 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(forceToApply, ForceMode.Impulse);
     }
 
-    private IEnumerator SmoothlyLerpMoveSpeed(float speedChangeFactor){ 
-        float time = 0f;
-        float difference = MathF.Abs(desiredMoveSpeed - moveSpeed);
-        float startVal = moveSpeed;
-        // Debug.Log(difference);
-
-        while(time < difference) {
-            // Debug.Log(moveSpeed);
-            moveSpeed = Mathf.Lerp(startVal, desiredMoveSpeed , time / difference);
-            time += Time.deltaTime * speedChangeFactor;
-            yield return null;
-        }
-        moveSpeed = desiredMoveSpeed;
-        keepMomentum = false;
-    }
 }
