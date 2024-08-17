@@ -227,17 +227,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc764c4009791949a233fc673c1ef3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2000
+  moveSpeed: 5000
   orientation: {fileID: 245306733}
   rb: {fileID: 0}
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  groundDrag: 2
+  groundDrag: 5
   jumpForce: 10
   jumpCooldown: 1
-  airDrag: 2.25
+  airDrag: 0.5
 --- !u!1 &298738259
 GameObject:
   m_ObjectHideFlags: 0
