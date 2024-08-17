@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float jumpForce;
     [SerializeField] public float jumpCooldown;
     [SerializeField] public float airDrag;
+    private float firstSpeed;
     int count = 0;
 
     private void Start()
@@ -30,16 +32,18 @@ public class PlayerMovement : MonoBehaviour
         // velocity biraz olmasi gerekenin ustune cikiyor sorun olursa limit koy.
         GatherInput();
         CheckGrounded();
-        SpeedControl();
 
         if(isGrounded) rb.drag = groundDrag;
-        else rb.drag = 0f;
+        else rb.drag =  0f;
 
-        // Debug.Log(rb.velocity.magnitude);
+        firstSpeed = new Vector3(rb.velocity.x, 0f, rb.velocity.z).magnitude;
     }
     private void FixedUpdate()
     {
         MovePlayer();
+        SpeedControl();
+        Debug.Log(new Vector3(rb.velocity.x,0f,rb.velocity.z).magnitude);
+
     }
     private void GatherInput()
     {
@@ -57,10 +61,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveVector = orientation.forward * yMovement + orientation.right * xMovement;
         if(isGrounded) {
-            rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime, ForceMode.Force);
+            rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime * 2f, ForceMode.Force);
         }
         else{
-            rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime / airDrag, ForceMode.Force);
+            rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime * 2f * airDrag , ForceMode.Force);
         }
 
     }
@@ -74,9 +78,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        if (flatVel.magnitude > moveSpeed * Time.deltaTime)
+        if (flatVel.magnitude > moveSpeed * Time.deltaTime / 10)
         {
-            Vector3 limitedvel = flatVel.normalized * moveSpeed * Time.deltaTime;
+            Vector3 limitedvel = flatVel.normalized * moveSpeed * Time.deltaTime / 10;
             rb.velocity = new Vector3(limitedvel.x, rb.velocity.y, limitedvel.z);
         }
     }
