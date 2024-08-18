@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4303112721637898010}
   - component: {fileID: 9199796207382370013}
   - component: {fileID: 8458610019525272942}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NormalPlayerProjectilePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 97064c34ecdc47c4da80bbc7707a4b2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cec88698d109bc45b724ed13e87128c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8458610019525272942}
   damage: 20
+  rb: {fileID: 8458610019525272942}
 --- !u!54 &8458610019525272942
 Rigidbody:
   m_ObjectHideFlags: 0

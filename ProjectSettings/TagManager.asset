@@ -16,8 +16,8 @@ TagManager:
   - Player
   - Camera
   - Enemy
-  - 
-  - 
+  - PlayerProjectile
+  - EnemyProjectile
   - 
   - 
   - 

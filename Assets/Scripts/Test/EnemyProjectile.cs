@@ -10,11 +10,12 @@ public class EnemyProjectile : MonoBehaviour
 
     void Start()
     {
-        rb.AddForce(transform.up * 2000f);
+        rb.AddForce(transform.up * 4000f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name);
         if (other.gameObject.tag == "Player")
         {
             PlayerProperties.Instance.TakeDamage(damage);
