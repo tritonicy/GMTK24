@@ -12,6 +12,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask groundLayer;
     private bool isAttacking;
+    private bool isInRunningAwayRange;
+    private bool isInRunningAway = false;
+    private float runAwayRange = 0f;
     private bool isInAttackRange;
     [SerializeField] private float attackRange;
     [SerializeField] private GameObject projectilePrefab;
@@ -24,16 +27,21 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Start()
     {
-        if (isCloseRange) attackRange = 3f;
+        if(isCloseRange) attackRange = 3f;
+        else runAwayRange = attackRange / 2;
 
         // agent.SetDestination(new Vector3(5f, transform.position.y, 15f));
     }
 
     private void Update()
     {
+        isInRunningAwayRange = Physics.CheckSphere(this.transform.position, runAwayRange, playerLayer);
         isInAttackRange = Physics.CheckSphere(this.transform.position, attackRange, playerLayer);
         
-        if(isInAttackRange) {
+        if(isInRunningAwayRange && !isInRunningAway) {
+            RunAway();
+        }
+        else if(isInAttackRange) {
             Attack();
         }
         else {
@@ -41,8 +49,28 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void RunAway()
+    {
+        Vector3 differenceVector = this.transform.position - playerTransform.position;
+        bool isValidMove = false;
+        Vector3 newMovePos = new Vector3(999f,999f,999f);
+        while(!isValidMove) {
+            newMovePos = new Vector3(this.transform.position.x + differenceVector.x + 
+                Random.Range(-5f,5f),this.transform.position.y, this.transform.position.z + differenceVector.z + Random.Range(-5f,5f));
+
+                isValidMove = Physics.CheckSphere(newMovePos, attackRange, playerLayer) && !Physics.CheckSphere(newMovePos, runAwayRange, playerLayer);
+        }
+        agent.SetDestination(newMovePos);
+        isInRunningAway = true;
+        Debug.Log(newMovePos);
+    }
+
     private void Attack()
     {
+        if(isInRunningAway) {
+            Invoke(nameof(ResetRunAway), 1f);
+        }
+
         Vector3 distanceVector = playerTransform.position - transform.position;
         Ray ray = new Ray(transform.position, distanceVector);
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
@@ -76,5 +104,8 @@ public class EnemyMovement : MonoBehaviour
     }
     private void StopChase() {
         agent.SetDestination(this.transform.position);
+    }
+    private void ResetRunAway() {
+        isInRunningAway = false;
     }
 }

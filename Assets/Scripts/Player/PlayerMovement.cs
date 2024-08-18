@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             moveLockTimeCounter += Time.deltaTime;
             if(moveLockTimeCounter >= moveLockTimer) {
                 moveLockTimeCounter = 0f;
+                CameraShake.Instance.ChangeFov(60);
                 isMoveLocked = false;
                 moveSpeed = runSpeed;
                 rb.drag = groundDrag;
@@ -186,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = dashSpeed;
 
         forceToApply = lookDir * dashForce + playerCam.up * upwardDashSpeed;
+        CameraShake.Instance.ChangeFov(75);
         
         Invoke(nameof(DelayedForceApply), 0.025f);
         Invoke(nameof(ResetDash), dashDuration);

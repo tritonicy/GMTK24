@@ -18,6 +18,7 @@ public class EnemyProjectile : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerProperties.Instance.TakeDamage(damage);
+            CameraShake.Instance.Shake(0.1f,0.2f);
         }
         
         Destroy(this.gameObject);
