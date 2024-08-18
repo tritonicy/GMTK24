@@ -51,18 +51,17 @@ public class EnemyMovement : MonoBehaviour
 
     private void RunAway()
     {
-        Vector3 differenceVector = this.transform.position - playerTransform.position;
+        Vector3 differenceVector = (this.transform.position - playerTransform.position).normalized * (runAwayRange + 1);
         bool isValidMove = false;
         Vector3 newMovePos = new Vector3(999f,999f,999f);
         while(!isValidMove) {
             newMovePos = new Vector3(this.transform.position.x + differenceVector.x + 
-                Random.Range(-5f,5f),this.transform.position.y, this.transform.position.z + differenceVector.z + Random.Range(-5f,5f));
+                Random.Range(-runAwayRange,runAwayRange),this.transform.position.y, this.transform.position.z + differenceVector.z + Random.Range(-runAwayRange,runAwayRange));
 
-                isValidMove = Physics.CheckSphere(newMovePos, attackRange, playerLayer) && !Physics.CheckSphere(newMovePos, runAwayRange, playerLayer);
+                isValidMove = !Physics.CheckSphere(newMovePos, runAwayRange, playerLayer);
         }
         agent.SetDestination(newMovePos);
         isInRunningAway = true;
-        Debug.Log(newMovePos);
     }
 
     private void Attack()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 260506310876969146}
   - component: {fileID: 3673486091983203296}
   - component: {fileID: 5802281611770068640}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ZimbaProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -400,6 +400,8 @@ MonoBehaviour:
     type: 3}
   cam: {fileID: 2008607272}
   attackPoint: {fileID: 964188792}
+  timeBetweenNormal: 0.1
+  timeBetweenHeavy: 1
 --- !u!114 &254417276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +458,7 @@ GameObject:
   - component: {fileID: 507657267}
   - component: {fileID: 507657269}
   - component: {fileID: 507657270}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Zimba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +760,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834219352}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BulletPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

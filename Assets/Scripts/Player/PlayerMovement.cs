@@ -50,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform cam;
     [SerializeField] Transform attackPoint;
     private bool readyToShoot = true;
+    [SerializeField] float timeBetweenNormal;
+    [SerializeField] float timeBetweenHeavy;
+
     
     //ziplama updatede calisiyor ilerde fixedupdateye almak gerekebilir.
     private void Start()
@@ -72,10 +75,10 @@ public class PlayerMovement : MonoBehaviour
             Dash();
         }
         if(Input.GetMouseButton(0) && readyToShoot) {
-            Shoot(normalProjectilePrefab, 1);
+            Shoot(normalProjectilePrefab, timeBetweenNormal);
         }
         if(Input.GetMouseButton(1) && readyToShoot) {
-            Shoot(heavyProjectilePrefab, 2);
+            Shoot(heavyProjectilePrefab, timeBetweenHeavy);
         }
 
         if(isDashing) {
@@ -122,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime * 2f * airDrag, ForceMode.Force);
         }
     }
-    private void Shoot(GameObject projectilePrefab, int timeBetween)
+    private void Shoot(GameObject projectilePrefab, float timeBetween)
     {
         readyToShoot = false;
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, cam.rotation);
@@ -132,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         if(Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 500f)) {
             forceDir = (hit.point - attackPoint.position).normalized;
         }
-        rb.AddForce(forceDir * 20f, ForceMode.Impulse);
+        rb.AddForce(forceDir * 200f, ForceMode.Impulse);
 
         Invoke(nameof(ResetAttack), timeBetween);
     }
