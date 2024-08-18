@@ -15,10 +15,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform orientation;
     [Header("Move")]
     [SerializeField] float groundDrag;
+    private float initialRunSpeed;
     [SerializeField] public float runSpeed;
     [Header("Dash")]
     [SerializeField] public float dashSpeed;
+    private float initialDashSpeed;
     [SerializeField] public float dashForce;
+    private float initialDashForce;
     [SerializeField] public float upwardDashSpeed;
     [HideInInspector] public bool isDashing = false;
     [SerializeField] public float dashDuration;
@@ -36,10 +39,14 @@ public class PlayerMovement : MonoBehaviour
     private float playerStartingHalfHeight;
     private bool readyToJump = true;
     [SerializeField] public float jumpForce;
+    private float initialJumpForce;
     [SerializeField] public float jumpCooldown;
     [SerializeField] public float airDrag;
+    private float initialAirDrag;
     [SerializeField] public float fallMultiplier = 2.5f;
+    private float initialFallMultiplier;
     [SerializeField] public float lowJumpMultiplier = 1.5f;
+    private float initialLowJumpMultiplier;
     [HideInInspector] public bool isMoveLocked;
     [Header("Hidden Variables")]
     [HideInInspector] public float moveSpeed;
@@ -52,18 +59,30 @@ public class PlayerMovement : MonoBehaviour
     private bool readyToShoot = true;
     [SerializeField] float timeBetweenNormal;
     [SerializeField] float timeBetweenHeavy;
+    private Vector3 initialnormalBulletScale = new Vector3(0.1f,0.1f,0.1f);
+    private Vector3 initialHeavyBulletScale = new Vector3(0.4f,0.4f,0.4f);
+
 
     
     //ziplama updatede calisiyor ilerde fixedupdateye almak gerekebilir.
     private void Start()
     {
+
+        initialRunSpeed = runSpeed;
+        initialDashSpeed = dashSpeed;
+        initialDashForce = dashForce;
+        initialJumpForce = jumpForce;
+        initialAirDrag = airDrag;
+        initialFallMultiplier = fallMultiplier;
+        initialLowJumpMultiplier = lowJumpMultiplier;
+        
         desiredMoveSpeed = runSpeed;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         playerStartingHalfHeight = this.transform.localScale.y;
     }
     private void Update()
-    {        
+    {       
         GatherInput();
         CheckGrounded();
 
@@ -75,10 +94,10 @@ public class PlayerMovement : MonoBehaviour
             Dash();
         }
         if(Input.GetMouseButton(0) && readyToShoot) {
-            Shoot(normalProjectilePrefab, timeBetweenNormal);
+            Shoot(normalProjectilePrefab, timeBetweenNormal,initialnormalBulletScale);
         }
         if(Input.GetMouseButton(1) && readyToShoot) {
-            Shoot(heavyProjectilePrefab, timeBetweenHeavy);
+            Shoot(heavyProjectilePrefab, timeBetweenHeavy,initialHeavyBulletScale);
         }
 
         if(isDashing) {
@@ -125,17 +144,18 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime * 2f * airDrag, ForceMode.Force);
         }
     }
-    private void Shoot(GameObject projectilePrefab, float timeBetween)
+    private void Shoot(GameObject projectilePrefab, float timeBetween, Vector3 initialBulletScale)
     {
         readyToShoot = false;
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, cam.rotation);
+        projectile.GetComponent<Transform>().localScale = initialBulletScale;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
         Vector3 forceDir = cam.transform.forward;
         if(Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 500f)) {
             forceDir = (hit.point - attackPoint.position).normalized;
         }
-        rb.AddForce(forceDir * 200f, ForceMode.Impulse);
+        rb.AddForce(forceDir * 100f, ForceMode.Impulse);
 
         Invoke(nameof(ResetAttack), timeBetween);
     }
@@ -221,5 +241,24 @@ public class PlayerMovement : MonoBehaviour
     private void DelayedForceApply() {
         rb.AddForce(forceToApply, ForceMode.Impulse);
     }
+    public void GrowBulletscale(Vector3 amount) {
+        initialnormalBulletScale += amount;
+        initialHeavyBulletScale += amount;
+    }
 
+    public void GrowSpeed() {
+        
+        runSpeed = initialRunSpeed * GetComponent<PlayerProperties>().newScale.y;
+    }
+    public void GrowDashSpeed() {
+        dashSpeed = initialDashSpeed * GetComponent<PlayerProperties>().newScale.y;
+        dashForce = initialDashForce * GetComponent<PlayerProperties>().newScale.y;
+    }
+
+    public void GrowJumpSpeed() {
+        jumpForce = initialJumpForce * GetComponent<PlayerProperties>().newScale.y;
+        airDrag = initialAirDrag * GetComponent<PlayerProperties>().newScale.y;
+        fallMultiplier = initialFallMultiplier * GetComponent<PlayerProperties>().newScale.y;
+        lowJumpMultiplier = initialLowJumpMultiplier * GetComponent<PlayerProperties>().newScale.y;
+    }
 }

@@ -15,13 +15,10 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
-        if (other.gameObject.tag == "Player")
         {
             PlayerProperties.Instance.TakeDamage(damage);
             CameraShake.Instance.Shake(0.1f,0.2f);
         }
-        
         Destroy(this.gameObject);
     }
 

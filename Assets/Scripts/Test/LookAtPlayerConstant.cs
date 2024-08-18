@@ -6,15 +6,14 @@ using UnityEngine;
 public class LookAtPlayerConstant : MonoBehaviour
 {
 
-    private Transform PlayerTransform;
+    [SerializeField] Transform camTransform;
 
     private void Start() {
-        PlayerTransform = FindObjectOfType<PlayerMovement>().gameObject.transform;
         this.transform.rotation = Quaternion.Euler(this.transform.rotation.x + 90f, this.transform.rotation.y,this.transform.rotation.z);
     }
     void Update()
     {
-        transform.LookAt(PlayerTransform);
+        transform.LookAt(camTransform);
         transform.eulerAngles = new Vector3(
             transform.eulerAngles.x + 90,
             transform.eulerAngles.y,

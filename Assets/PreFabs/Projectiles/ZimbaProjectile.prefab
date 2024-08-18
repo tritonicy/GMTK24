@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7210024348533608014}
   - component: {fileID: 4027583045081591786}
   - component: {fileID: 6655442401200698721}
-  - component: {fileID: 260506310876969146}
   - component: {fileID: 3673486091983203296}
   - component: {fileID: 5802281611770068640}
+  - component: {fileID: 3240870647268395371}
   m_Layer: 12
   m_Name: ZimbaProjectile
   m_TagString: Untagged
@@ -86,27 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &260506310876969146
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1931817187903157181}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3673486091983203296
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -148,3 +127,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3673486091983203296}
   damage: 20
+--- !u!65 &3240870647268395371
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931817187903157181}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 5.540164, z: 1}
+  m_Center: {x: 0, y: -2.270082, z: 0}

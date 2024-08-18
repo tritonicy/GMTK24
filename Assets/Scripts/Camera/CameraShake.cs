@@ -9,7 +9,6 @@ public class CameraShake : MonoBehaviour
 
     private void Awake() {
         Instance = this;
-        Debug.Log(GetComponent<Camera>().fieldOfView);
     }
 
     public void Shake(float duration, float magnitude) {
