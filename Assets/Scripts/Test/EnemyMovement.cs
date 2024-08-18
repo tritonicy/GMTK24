@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     [HideInInspector] public NavMeshAgent agent;
-    private float timeBetweenAttacks = 0f;
+    private float timeBetweenAttacks = 1f;
     private Transform playerTransform;
     [SerializeField] bool isCloseRange;
     [SerializeField] private LayerMask playerLayer;
@@ -14,6 +14,8 @@ public class EnemyMovement : MonoBehaviour
     private bool isAttacking;
     private bool isInAttackRange;
     [SerializeField] private float attackRange;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] public Transform bulletPos;
 
     private void Awake()
     {
@@ -39,19 +41,34 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void Attack() {
-        if(!isAttacking) {
-            StopChase();
-            isAttacking = true;
-            Debug.Log("Attack");
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+    private void Attack()
+    {
+        Vector3 distanceVector = playerTransform.position - transform.position;
+        Ray ray = new Ray(transform.position, distanceVector);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        {
+            if (raycastHit.collider.gameObject.tag != "Player")
+            {
+                agent.SetDestination(new Vector3(playerTransform.position.x, this.transform.position.y, playerTransform.position.z));
+            }
+            else
+            {
+                if (!isAttacking)
+                {
+                    StopChase();
+                    isAttacking = true;
+                    Quaternion rotationVector = GetComponentInChildren<MeshCollider>().gameObject.transform.rotation;
+                    Rigidbody rb = Instantiate(projectilePrefab, bulletPos.position , rotationVector).GetComponent<Rigidbody>();
+
+                    Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                }
+            }
         }
     }
     private void Chase() {
-        // Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, this.transform.localScale.y + 0.2f, groundLayer);
-        // Vector3 movePos = new Vector3(playerTransform.transform.position.x, hit.point.y , playerTransform.position.z);
         agent.SetDestination(new Vector3(playerTransform.position.x, this.transform.position.y, playerTransform.position.z));
-        Debug.Log("chasing");
+
+        // Debug.Log("chasing");
     }
 
     private void ResetAttack() {
