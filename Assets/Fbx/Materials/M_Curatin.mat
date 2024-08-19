@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_paperStack
+  m_Name: M_Curatin
   m_Shader: {fileID: -6465566751694194690, guid: 5af3ff586f57a1444be1c838517c0cc9,
     type: 3}
   m_Parent: {fileID: 0}
@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - MainTex:
-        m_Texture: {fileID: 2800000, guid: 7dc6cbfb34548d042b26a1d1dae43120, type: 3}
+        m_Texture: {fileID: 2800000, guid: 00083a3a1ecdd6b488b643bc0054a163, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Mask_R_Emission:
