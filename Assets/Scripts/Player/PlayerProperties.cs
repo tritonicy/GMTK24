@@ -16,7 +16,7 @@ public class PlayerProperties : MonoBehaviour
     private bool isGrowing;
     float elapsedTime;
     Vector3 firstScale;
-    public Vector3 newScale;
+    [HideInInspector] public Vector3 newScale;
 
     private void Update() {
         if(currentExperience >= EXPTOGET) {
