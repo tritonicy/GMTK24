@@ -19,7 +19,7 @@ public class PlayerProperties : MonoBehaviour
     public Vector3 newScale;
 
     private void Update() {
-        if(Instance.currentExperience >= EXPTOGET) {
+        if(currentExperience >= EXPTOGET) {
             currentLevel++;
             switch (currentLevel) {
                 case 1:
@@ -36,7 +36,7 @@ public class PlayerProperties : MonoBehaviour
                 // boss gelecek
                 break;
             }
-            Instance.currentExperience = 0;
+            currentExperience = 0;
         }
     }
     private void Start() {
@@ -46,6 +46,7 @@ public class PlayerProperties : MonoBehaviour
         else{
             Destroy(this.gameObject);
         }
+        newScale = Vector3.one;
     }
     private void FixedUpdate() {
         if(isGrowing) {
@@ -64,11 +65,14 @@ public class PlayerProperties : MonoBehaviour
     }
     public void GainExperience(int amount) {
         currentExperience += amount;
+    
+        StartGrow();
+        Invoke(nameof(EndGrow), 1f);
     }
     public void StartGrow() {
         isGrowing = true;
         firstScale = pivot.localScale;
-        newScale = new Vector3(pivot.localScale.x, pivot.localScale.y + growAmountPerKill, pivot.localScale.z);
+        newScale = new Vector3(pivot.localScale.x + growAmountPerKill / 2, newScale.y + growAmountPerKill, pivot.localScale.z + growAmountPerKill / 2);
     }
     public void EndGrow() {
         isGrowing = false;

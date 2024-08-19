@@ -7,18 +7,20 @@ public class ExperienceItem : MonoBehaviour
 {
     [SerializeField] int experience;
     private PlayerMovement playerMovement;
+    private PlayerProperties playerProperties;
     private EnemyMovement[] enemyMovements;
 
     private void Start() {
         playerMovement = FindObjectOfType<PlayerMovement>();
         enemyMovements = FindObjectsOfType<EnemyMovement>();
+        playerProperties = FindObjectOfType<PlayerProperties>();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
 
+    private void OnCollisionEnter(Collision other)
+    {
         if (other.gameObject.tag == "Player")
-        {   
+        {
             GrowPlayer();
             GrowPlayerStats();
             // GrowBullets(); 
@@ -48,8 +50,6 @@ public class ExperienceItem : MonoBehaviour
 
     private void GrowPlayer()
     {
-        PlayerProperties.Instance.GainExperience(experience);
-        PlayerProperties.Instance.StartGrow();
-        Invoke(nameof(PlayerProperties.Instance.EndGrow), 1f);
+        playerProperties.GainExperience(experience);
     }
 }

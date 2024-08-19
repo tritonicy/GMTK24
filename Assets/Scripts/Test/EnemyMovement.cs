@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Start()
     {
-        if (isCloseRange) attackRange = 3f;
+        if (isCloseRange) attackRange = 2f;
         else runAwayRange = attackRange / 2;
 
         initialAttackRange = attackRange;
@@ -75,6 +75,16 @@ public class EnemyMovement : MonoBehaviour
 
     private void Attack()
     {
+        if(isCloseRange) {
+            agent.SetDestination(new Vector3(playerTransform.position.x, this.transform.position.y, playerTransform.position.z));
+            if(isInAttackRange) {
+                Debug.Log("Patladim");
+                playerTransform.GetComponent<PlayerProperties>().TakeDamage(10);
+                Destroy(this.gameObject);
+            }
+            return;
+        }
+
         if (isInRunningAway)
         {
             Invoke(nameof(ResetRunAway), 1f);
