@@ -54,6 +54,7 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             Chase();
+            Attack();
         }
     }
 
