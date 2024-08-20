@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.54, y: 0.41, z: -5.39}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4020232299553354009}
@@ -99,9 +99,9 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4248279073448661010}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 35
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

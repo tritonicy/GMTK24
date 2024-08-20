@@ -55,8 +55,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 spawnPoint = new Vector3(Random.Range(bounds2.min.x, bounds2.max.x), Random.Range(bounds2.min.y, bounds2.max.y), Random.Range(bounds2.min.z, bounds2.max.z));
             }
-            int randomInt = Random.Range(0, firstAreaPrefabs.Length);
-            SpawnPrefab(firstAreaPrefabs[randomInt], spawnPoint);
+            int randomInt = Random.Range(0, secondAreaPrefabs.Length);
+            SpawnPrefab(secondAreaPrefabs[randomInt], spawnPoint);
             Invoke(nameof(resetInstantiating), 1f / spawnRate);
         }
         else if (bounds3.Contains(playerMovement.transform.position))
@@ -69,8 +69,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 spawnPoint = new Vector3(Random.Range(bounds3.min.x, bounds3.max.x), Random.Range(bounds3.min.y, bounds3.max.y), Random.Range(bounds3.min.z, bounds3.max.z));
             }
-            int randomInt = Random.Range(0, firstAreaPrefabs.Length);
-            SpawnPrefab(firstAreaPrefabs[randomInt], spawnPoint);
+            int randomInt = Random.Range(0, thirdAreaPrefabs.Length);
+            SpawnPrefab(thirdAreaPrefabs[randomInt], spawnPoint);
             Invoke(nameof(resetInstantiating), 1f / spawnRate);
         }
 

@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: d219e34b402583547b64d8486573a5de
   - enabled: 1
-    path: Assets/Scenes/BurakScene.unity
-    guid: f66871bec288f6a46bd4052d63587447
+    path: Assets/Scenes/MainScene.unity
+    guid: 1ba78bbebf3021342883520971c8322c
   m_configObjects: {}

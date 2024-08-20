@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerProperties : MonoBehaviour
@@ -70,7 +71,7 @@ public class PlayerProperties : MonoBehaviour
         slider.value = health;
 
         if(health <= 0 ){
-            // Debug.Log("died");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     public void GainExperience(int amount) {

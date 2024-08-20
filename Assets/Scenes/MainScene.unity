@@ -16173,10 +16173,19 @@ PrefabInstance:
       propertyPath: animController
       value: 
       objectReference: {fileID: 134125374}
+    - target: {fileID: 2099925908061360752, guid: aed26cb781738154c9428f98d74c1c60,
+        type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 985521444}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1393510774296712988, guid: aed26cb781738154c9428f98d74c1c60,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 985521444}
   m_SourcePrefab: {fileID: 100100000, guid: aed26cb781738154c9428f98d74c1c60, type: 3}
 --- !u!4 &985521442 stripped
 Transform:
@@ -16190,6 +16199,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 985521441}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &985521444
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985521443}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &992374084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20473,12 +20503,12 @@ PrefabInstance:
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
       propertyPath: m_VoxelSize
-      value: 2.3333333
+      value: 0.16666667
       objectReference: {fileID: 0}
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
       propertyPath: m_AgentTypeID
-      value: 1479372276
+      value: -1372625422
       objectReference: {fileID: 0}
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
@@ -20488,7 +20518,7 @@ PrefabInstance:
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
       propertyPath: m_UseGeometry
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
@@ -24745,28 +24775,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4835303189449729893, guid: c378438f68bcaac46aad0339f6667384,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5004.5107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835303189449729893, guid: c378438f68bcaac46aad0339f6667384,
+        type: 3}
       propertyPath: m_LocalScale.y
-      value: 4463.1284
+      value: 5004.51
       objectReference: {fileID: 0}
     - target: {fileID: 4835303189449729893, guid: c378438f68bcaac46aad0339f6667384,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 4463.128
+      value: 5004.5093
       objectReference: {fileID: 0}
     - target: {fileID: 4835303189449729893, guid: c378438f68bcaac46aad0339f6667384,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2742.6
+      value: 3080.9
       objectReference: {fileID: 0}
     - target: {fileID: 4835303189449729893, guid: c378438f68bcaac46aad0339f6667384,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.89397
       objectReference: {fileID: 0}
     - target: {fileID: 4835303189449729893, guid: c378438f68bcaac46aad0339f6667384,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1250.3
+      value: -1405.1
       objectReference: {fileID: 0}
     - target: {fileID: 4835303189449729893, guid: c378438f68bcaac46aad0339f6667384,
         type: 3}
@@ -27124,7 +27159,7 @@ MonoBehaviour:
   DeadZone: 0
   playerPivot: {fileID: 465994966}
   RequiredHeight: 3
-  meshData: {fileID: 23800000, guid: a2ffa0944fcbf8a4a80e96bf040cdeb2, type: 2}
+  meshData: {fileID: 23800000, guid: b3cea133ed430cd4495282f8c17ed91a, type: 2}
 --- !u!65 &1602455534
 BoxCollider:
   m_ObjectHideFlags: 0
