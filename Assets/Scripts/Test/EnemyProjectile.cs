@@ -7,13 +7,15 @@ public class EnemyProjectile : MonoBehaviour
 
     [SerializeField] public Rigidbody rb;
     [SerializeField] int damage;
-
+    public float initialBulletSpeed = 4000f;
+    public float bulletSpeed = 4000f;
     [SerializeField] public float duration = 0.5f;
     [SerializeField] public float magnitude = 0.2f;
 
     void Start()
     {
-        rb.AddForce(transform.up * 4000f);
+        initialBulletSpeed = bulletSpeed;
+        rb.AddForce(transform.up * bulletSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
