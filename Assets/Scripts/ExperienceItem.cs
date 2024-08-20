@@ -27,6 +27,7 @@ public class ExperienceItem : MonoBehaviour
             GrowPlayerStats();
             // GrowBullets(); 
             GrowEnemyRanges();
+            SFXManager.PlaySoundFX(SoundType.YerdenItemAlma);
             Destroy(this.gameObject);
         }
     }

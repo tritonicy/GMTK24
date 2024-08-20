@@ -4,16 +4,15 @@ using UnityEngine;
 
 public enum SoundType {
     PlayerAttack,
-    EnemyAttack,
-    Walk,
+    Walk1,
     Walk2,
     Walk3,
-    Dash,
-    Jump,
-    TakeDamage,
-    DoneDamage,
+    Dash1,
+    Dash2,
+    Jump1,
+    Jump2,
+    YerdenItemAlma,
     KillEnemy,
-    Die
 }
 
 [RequireComponent(typeof(AudioSource))]
