@@ -6,15 +6,17 @@ using DG.Tweening;
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake Instance;
+    [SerializeField] Camera mainCam;
 
     private void Awake() {
         Instance = this;
     }
 
     public void Shake(float duration, float magnitude) {
-        transform.DOShakePosition(0.5, 0.2);
+        transform.DOShakePosition(duration, magnitude);
+        mainCam.DOShakePosition(duration, magnitude);
     }
     public void ChangeFov(int endFov) {
-        GetComponent<Camera>().DOFieldOfView(endFov, 0.25f);
+        mainCam.DOFieldOfView(endFov, 0.25f);
     }
 }

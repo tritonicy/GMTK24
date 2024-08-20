@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a758e843607e88144be0d7df6beefa4b
+guid: 7127a22f8dfb5b7448f0bbc04300fb3d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Colors
-    second: {fileID: 2100000, guid: b51fba84c2b0dde4f9beb366205bc51b, type: 2}
+      name: LegsMat
+    second: {fileID: 2100000, guid: 14e972f6030f57b4793752ff57767565, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MasaMat
+    second: {fileID: 2100000, guid: 9bcc652ba3d211c479c0a5d6d833be17, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
