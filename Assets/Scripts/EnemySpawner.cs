@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
 
             Vector3 spawnPoint = Vector3.positiveInfinity;
             while(CheckIfPlaceOccupied(spawnPoint)) {
-                spawnPoint = new Vector3(Random.Range(bounds1.min.x, bounds1.max.x),Random.Range(bounds1.min.y, bounds1.max.y), Random.Range(bounds1.min.y, bounds1.max.y));
+                spawnPoint = new Vector3(Random.Range(bounds1.min.x, bounds1.max.x),Random.Range(bounds1.min.y, bounds1.max.y), Random.Range(bounds1.min.z, bounds1.max.z));
             }
             int randomInt = Random.Range(0, firstAreaPrefabs.Length);
             SpawnPrefab(firstAreaPrefabs[randomInt], spawnPoint);
