@@ -126,7 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 3673486091983203296}
-  damage: 20
+  damage: 4
+  initialBulletSpeed: 4000
+  bulletSpeed: 4000
   duration: 0.42
   magnitude: 0.11
 --- !u!65 &3240870647268395371
