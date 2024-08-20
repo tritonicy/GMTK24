@@ -1205,7 +1205,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70196e21ad1126741acbefa4b9d761c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SFXList: []
+  SFXList:
+  - {fileID: 8300000, guid: 6acc871b3831483469c2bd49d9ba1442, type: 3}
+  - {fileID: 8300000, guid: fb53ec03688fe1b49b46b8abf2e62f69, type: 3}
+  - {fileID: 8300000, guid: 6ffa1277c94b79c4db8bfed85bbb2622, type: 3}
+  - {fileID: 8300000, guid: 50215f71317d9e14988675a5dbd5e37a, type: 3}
+  - {fileID: 8300000, guid: d9c9f9b0c7200fe418cf6c7554956df9, type: 3}
+  - {fileID: 8300000, guid: 278d5108b5fc79149a79dd111872987a, type: 3}
+  - {fileID: 8300000, guid: df1be95daf6c95d4bb9a20c70a57dff3, type: 3}
+  - {fileID: 8300000, guid: 1273fb5032fbd1c4fb72d53a63bbbd06, type: 3}
+  - {fileID: 8300000, guid: 4625578012333904b9f4f778d5eb4173, type: 3}
+  - {fileID: 8300000, guid: 07964ed94e092c244a3ab7faf13f30b0, type: 3}
 --- !u!82 &482161714
 AudioSource:
   m_ObjectHideFlags: 0

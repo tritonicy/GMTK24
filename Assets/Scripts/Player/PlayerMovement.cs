@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -67,8 +66,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public GameObject panel;
     public bool isControlsActive = true;
     [SerializeField] Animator animController;
-
-    
+    [SerializeField] Animator playerAnimator;    
     //ziplama updatede calisiyor ilerde fixedupdateye almak gerekebilir.
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
@@ -94,6 +92,11 @@ public class PlayerMovement : MonoBehaviour
     {   
         GatherInput();
         CheckGrounded();
+        if(rb.velocity.magnitude > 0.1f) {
+            playerAnimator.SetBool("isWalking", true);
+        }
+        playerAnimator.SetBool("isWalking", false);
+        
 
         if (isGrounded && !isDashing) rb.drag = groundDrag;
         else rb.drag = 0f;
@@ -158,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isControlsActive) return;
         readyToShoot = false;
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, cam.rotation);
+        SFXManager.PlaySoundFX(SoundType.PlayerAttack);
         projectile.GetComponent<Transform>().localScale = initialBulletScale;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
@@ -222,6 +226,17 @@ public class PlayerMovement : MonoBehaviour
 
         forceToApply = lookDir * dashForce + playerCam.up * upwardDashSpeed;
         CameraShake.Instance.ChangeFov(75);
+
+        int randInt = UnityEngine.Random.Range(1, 3);
+        switch (randInt)
+        {
+            case 1:
+                SFXManager.PlaySoundFX(SoundType.Dash1);
+                break;
+            case 2:
+                SFXManager.PlaySoundFX(SoundType.Dash2);
+                break;
+        }
 
         Invoke(nameof(DelayedForceApply), 0.025f);
         Invoke(nameof(ResetDash), dashDuration);
@@ -288,5 +303,20 @@ public class PlayerMovement : MonoBehaviour
     }
     public void EnableControls() {
         isControlsActive = true;
+    }
+
+    public void Walk() {
+        int randInt = UnityEngine.Random.Range(1,3);
+        switch(randInt) {
+            case 1:
+                SFXManager.PlaySoundFX(SoundType.Walk1);
+                break;
+            case 2:
+                SFXManager.PlaySoundFX(SoundType.Walk2);
+                break;
+            case 3:
+                SFXManager.PlaySoundFX(SoundType.Walk3);
+                break;
+        }
     }
 }
