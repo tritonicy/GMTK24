@@ -30,8 +30,8 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Start() {
         bounds1 = new Bounds(centerPoint1, sizeBounds1);
-        // bounds2 = new Bounds(centerPoint2, sizeBounds2);
-        // bounds3 = new Bounds(centerPoint3, sizeBounds3);
+        bounds2 = new Bounds(centerPoint2, sizeBounds2);
+        bounds3 = new Bounds(centerPoint3, sizeBounds3);
     }
     private void Update() {
         if(bounds1.Contains(playerMovement.transform.position)) {
@@ -46,16 +46,40 @@ public class EnemySpawner : MonoBehaviour
             SpawnPrefab(firstAreaPrefabs[randomInt], spawnPoint);
             Invoke(nameof(resetInstantiating), 1f / spawnRate);
         }
-
-        // else if(bounds2.Contains(playerMovement.transform.position)) {
+        else if(bounds2.Contains(playerMovement.transform.position)) {
             // oyuncu 2. dusman spawnlanma bolgesinde
-        // }
+            if (isInstantiating) return;
+
+            Vector3 spawnPoint = Vector3.positiveInfinity;
+            while (CheckIfPlaceOccupied(spawnPoint))
+            {
+                spawnPoint = new Vector3(Random.Range(bounds2.min.x, bounds2.max.x), Random.Range(bounds2.min.y, bounds2.max.y), Random.Range(bounds2.min.z, bounds2.max.z));
+            }
+            int randomInt = Random.Range(0, firstAreaPrefabs.Length);
+            SpawnPrefab(firstAreaPrefabs[randomInt], spawnPoint);
+            Invoke(nameof(resetInstantiating), 1f / spawnRate);
+        }
+        else if (bounds3.Contains(playerMovement.transform.position))
+        {
+            // oyuncu 3. dusman spawnlanma bolgesinde
+            if (isInstantiating) return;
+
+            Vector3 spawnPoint = Vector3.positiveInfinity;
+            while (CheckIfPlaceOccupied(spawnPoint))
+            {
+                spawnPoint = new Vector3(Random.Range(bounds3.min.x, bounds3.max.x), Random.Range(bounds3.min.y, bounds3.max.y), Random.Range(bounds3.min.z, bounds3.max.z));
+            }
+            int randomInt = Random.Range(0, firstAreaPrefabs.Length);
+            SpawnPrefab(firstAreaPrefabs[randomInt], spawnPoint);
+            Invoke(nameof(resetInstantiating), 1f / spawnRate);
+        }
+
     }
     
     private void OnDrawGizmos() {
         Gizmos.DrawCube(centerPoint1, sizeBounds1);
-        // Gizmos.DrawCube(centerPoint2, sizeBounds2);
-        // Gizmos.DrawCube(centerPoint3, sizeBounds3);
+        Gizmos.DrawCube(centerPoint2, sizeBounds2);
+        Gizmos.DrawCube(centerPoint3, sizeBounds3);
     }
 
     private bool CheckIfPlaceOccupied(Vector3 pos) {

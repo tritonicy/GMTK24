@@ -466,6 +466,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -3928,6 +3933,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4310,6 +4320,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -6275,6 +6290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6665494004843545316, guid: 30d200d82e7fe9d478043c27fc67ab94,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6665494004843545316, guid: 30d200d82e7fe9d478043c27fc67ab94,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6351,6 +6371,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Saksi 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6665494004843545316, guid: 30d200d82e7fe9d478043c27fc67ab94,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6665494004843545316, guid: 30d200d82e7fe9d478043c27fc67ab94,
         type: 3}
@@ -6954,6 +6979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -7812,6 +7842,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -8968,7 +9003,7 @@ PrefabInstance:
     - target: {fileID: 2534641772632101511, guid: d298e69f05497da4ba35f35d5d12e756,
         type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2534641772632101511, guid: d298e69f05497da4ba35f35d5d12e756,
         type: 3}
@@ -9631,6 +9666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_RegularDesk (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
         type: 3}
@@ -10362,6 +10402,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799242951559487010, guid: d44b9aae9d83c1c4392f9a560e12470e,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799242951559487010, guid: d44b9aae9d83c1c4392f9a560e12470e,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10731,6 +10776,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044377503164684344, guid: 359a1625f799fb049abe04dd8fd92308,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044377503164684344, guid: 359a1625f799fb049abe04dd8fd92308,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -10842,6 +10892,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -12327,6 +12382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6665494004843545316, guid: 30d200d82e7fe9d478043c27fc67ab94,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6665494004843545316, guid: 30d200d82e7fe9d478043c27fc67ab94,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -12735,6 +12795,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -13115,6 +13180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -13619,6 +13689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_RegularDesk (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
         type: 3}
@@ -16140,6 +16215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044377503164684344, guid: 359a1625f799fb049abe04dd8fd92308,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044377503164684344, guid: 359a1625f799fb049abe04dd8fd92308,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -17386,6 +17466,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6665494004843545316, guid: 30d200d82e7fe9d478043c27fc67ab94,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6665494004843545316, guid: 30d200d82e7fe9d478043c27fc67ab94,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -17601,6 +17686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_StylizedBox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
         type: 3}
@@ -18348,6 +18438,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799242951559487010, guid: d44b9aae9d83c1c4392f9a560e12470e,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799242951559487010, guid: d44b9aae9d83c1c4392f9a560e12470e,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -18613,6 +18708,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_StylizedBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
         type: 3}
@@ -18902,6 +19002,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -20207,6 +20312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799242951559487010, guid: d44b9aae9d83c1c4392f9a560e12470e,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799242951559487010, guid: d44b9aae9d83c1c4392f9a560e12470e,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -20363,12 +20473,12 @@ PrefabInstance:
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
       propertyPath: m_VoxelSize
-      value: 0.16666667
+      value: 2.3333333
       objectReference: {fileID: 0}
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
       propertyPath: m_AgentTypeID
-      value: -1372625422
+      value: 1479372276
       objectReference: {fileID: 0}
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
@@ -20378,7 +20488,7 @@ PrefabInstance:
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
       propertyPath: m_UseGeometry
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6105434446160986743, guid: 423192bbcf867b64cb98d99164a4f710,
         type: 3}
@@ -20647,6 +20757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_RegularDesk (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
         type: 3}
@@ -21380,6 +21495,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -21839,6 +21959,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_RegularDesk (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
         type: 3}
@@ -23057,8 +23182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeadZone: 1
   playerPivot: {fileID: 465994966}
-  RequiredHeight: 4
-  meshData: {fileID: 23800000, guid: fb47481515f2b2e49a3afc233a8734fc, type: 2}
+  RequiredHeight: 5
+  meshData: {fileID: 23800000, guid: 019c3decf7a754f4cb9c05544bb08e14, type: 2}
 --- !u!65 &1359432670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23953,6 +24078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -24234,6 +24364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -24676,7 +24811,7 @@ PrefabInstance:
     - target: {fileID: 5211124421750078943, guid: c378438f68bcaac46aad0339f6667384,
         type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5211124421750078943, guid: c378438f68bcaac46aad0339f6667384,
         type: 3}
@@ -26968,7 +27103,7 @@ Transform:
   m_GameObject: {fileID: 1602455531}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.57, y: 43.27, z: -92.02}
+  m_LocalPosition: {x: 3.53, y: 44.38, z: -91.23}
   m_LocalScale: {x: 6.6097, y: 2.0406787, z: 23.069836}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27407,6 +27542,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -28033,6 +28173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -28262,6 +28407,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -29150,6 +29300,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7071125043272243212, guid: 91729563e8047ce4ca6257c2bebe41cb,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1791274303}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29554,6 +29709,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -29824,6 +29984,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1789521857}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &1791274303 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 8130895761620150265, guid: 91729563e8047ce4ca6257c2bebe41cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1721784726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1803464454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29846,6 +30012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PaperStacStack (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044377503164684344, guid: 359a1625f799fb049abe04dd8fd92308,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2044377503164684344, guid: 359a1625f799fb049abe04dd8fd92308,
         type: 3}
@@ -30334,6 +30505,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_RegularDesk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
         type: 3}
@@ -31339,16 +31515,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerPoint1: {x: 8.3, y: 36.1, z: -90.9}
   sizeBounds1: {x: 12.11, y: 9.7, z: 20}
-  centerPoint2: {x: 0, y: 0, z: 0}
-  sizeBounds2: {x: 0, y: 0, z: 0}
-  centerPoint3: {x: 0, y: 0, z: 0}
-  sizeBounds3: {x: 0, y: 0, z: 0}
+  centerPoint2: {x: -148.8, y: 44.5, z: 0}
+  sizeBounds2: {x: 165.2, y: 28.3, z: 78.1}
+  centerPoint3: {x: -106.79, y: 49.05, z: -423.2}
+  sizeBounds3: {x: 636.9, y: 118, z: 635.3}
   spawnRate: 0.35
   firstAreaPrefabs:
   - {fileID: 4460056345046106316, guid: 8771a71358093da429775cb9a1e526df, type: 3}
   - {fileID: 3123511502945749489, guid: 2e316827f05f087428b153fac5b966b3, type: 3}
-  secondAreaPrefabs: []
-  thirdAreaPrefabs: []
+  - {fileID: 1795650951890048593, guid: b9d75783f46319747991683a803275a4, type: 3}
+  secondAreaPrefabs:
+  - {fileID: 4248279073448661010, guid: d75a2ba3106fa73418fbc9747771bfcf, type: 3}
+  - {fileID: 9188083346599673938, guid: f25488414b00b594d98bbff278e5f841, type: 3}
+  thirdAreaPrefabs:
+  - {fileID: 1008031527763881449, guid: 79b053d17e5e83145b18d2ff0ba993d8, type: 3}
+  - {fileID: 6988218965629342700, guid: adece877677163043b5843b44bab160e, type: 3}
 --- !u!4 &1940422927
 Transform:
   m_ObjectHideFlags: 0
@@ -31376,6 +31557,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_StylizedBox (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
         type: 3}
@@ -31669,7 +31855,7 @@ PrefabInstance:
     - target: {fileID: 1693158203518277594, guid: 6be1a3da398ce6e4aba00bb463973d6e,
         type: 3}
       propertyPath: m_Layer
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1693158203518277594, guid: 6be1a3da398ce6e4aba00bb463973d6e,
         type: 3}
@@ -32014,6 +32200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Resepsiyon 1 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7604041066965436136, guid: 7caa9a671fa5865459a38bebffcf035a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7604041066965436136, guid: 7caa9a671fa5865459a38bebffcf035a,
         type: 3}
@@ -33248,6 +33439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2044377503164684344, guid: 359a1625f799fb049abe04dd8fd92308,
         type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2044377503164684344, guid: 359a1625f799fb049abe04dd8fd92308,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -33856,6 +34052,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1905237070199550133, guid: ea8ab063adbf1d04fa14a7d0aa663935,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -33897,6 +34098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_Chair (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2581215358121530747, guid: 4a95dba86b5c1404c981255600da68a5,
         type: 3}
@@ -34371,6 +34577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: F_StylizedBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7453265646805165449, guid: 1ade06983d9ab664f966bb4f0442a7ec,
         type: 3}
