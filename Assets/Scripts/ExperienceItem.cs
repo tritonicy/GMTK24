@@ -9,7 +9,6 @@ public class ExperienceItem : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerProperties playerProperties;
     private EnemyMovement[] enemyMovements;
-    [SerializeField] int amountToHeal = 10;
 
     private void Start() {
         playerMovement = FindObjectOfType<PlayerMovement>();
@@ -22,18 +21,12 @@ public class ExperienceItem : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GiveHealth(amountToHeal);
             GrowPlayer();
             GrowPlayerStats();
             // GrowBullets(); 
             GrowEnemyRanges();
             Destroy(this.gameObject);
         }
-    }
-
-    private void GiveHealth(int amountToHeal)
-    {
-        playerProperties.GiveHealth(amountToHeal);
     }
 
     private void GrowEnemyRanges()

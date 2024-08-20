@@ -18,7 +18,6 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
         {
             PlayerProperties.Instance.TakeDamage(damage);
             CameraShake.Instance.Shake(duration, magnitude);

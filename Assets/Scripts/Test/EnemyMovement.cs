@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [HideInInspector] public NavMeshAgent agent;
     private float timeBetweenAttacks = 1f;
-    private Transform camTransform;
+    [SerializeField] public Transform camTransform;
     private Transform playerTransform;
     [SerializeField] bool isCloseRange;
     [SerializeField] private LayerMask playerLayer;
@@ -27,7 +27,6 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyLayer = ~enemyLayer;
         agent = GetComponent<NavMeshAgent>();
-        camTransform = GameObject.Find("Orientation").transform;
         playerTransform = FindObjectOfType<PlayerMovement>().gameObject.transform;
     }
     private void Start()

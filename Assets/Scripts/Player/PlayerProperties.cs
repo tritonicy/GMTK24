@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerProperties : MonoBehaviour
 {
@@ -18,7 +17,6 @@ public class PlayerProperties : MonoBehaviour
     float elapsedTime;
     Vector3 firstScale;
     [HideInInspector] public Vector3 newScale;
-    [SerializeField] Slider slider;
 
     private void Update() {
         if(currentExperience >= EXPTOGET) {
@@ -49,8 +47,6 @@ public class PlayerProperties : MonoBehaviour
             Destroy(this.gameObject);
         }
         newScale = Vector3.one;
-
-        slider.maxValue = health;
     }
     private void FixedUpdate() {
         if(isGrowing) {
@@ -60,14 +56,8 @@ public class PlayerProperties : MonoBehaviour
             elapsedTime = 0f;
         }
     }
-    public void GiveHealth(int amountToHeal) {
-        health += amountToHeal;
-        slider.value = health;        
-    }
     public void TakeDamage(int damage) {
         health -= damage;
-
-        slider.value = health;
 
         if(health <= 0 ){
             // Debug.Log("died");
