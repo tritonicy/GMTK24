@@ -23212,7 +23212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeadZone: 1
   playerPivot: {fileID: 465994966}
-  RequiredHeight: 5
+  RequiredHeight: 3
   meshData: {fileID: 23800000, guid: 019c3decf7a754f4cb9c05544bb08e14, type: 2}
 --- !u!65 &1359432670
 BoxCollider:
@@ -31565,6 +31565,7 @@ MonoBehaviour:
   thirdAreaPrefabs:
   - {fileID: 1008031527763881449, guid: 79b053d17e5e83145b18d2ff0ba993d8, type: 3}
   - {fileID: 6988218965629342700, guid: adece877677163043b5843b44bab160e, type: 3}
+  - {fileID: 2209060916878846940, guid: 1ab0ba1b24260954298f8ebbbc8b0856, type: 3}
 --- !u!4 &1940422927
 Transform:
   m_ObjectHideFlags: 0
