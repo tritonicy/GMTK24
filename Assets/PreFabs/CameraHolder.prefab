@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2806648252269895638}
   - component: {fileID: 2328540302991988403}
   - component: {fileID: 4212351278778254748}
-  - component: {fileID: 3301410866657779126}
   m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -155,18 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sens: 400
   orientation: {fileID: 0}
---- !u!114 &3301410866657779126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70101603531617096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 063631a06f2e3614bb1eb70ab9d3ac13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1368192292991560468
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +243,7 @@ GameObject:
   - component: {fileID: 2311789071854787043}
   - component: {fileID: 3652056306621846627}
   - component: {fileID: 1083459996548574947}
+  - component: {fileID: 3040668439738423195}
   m_Layer: 9
   m_Name: Hand
   m_TagString: Untagged
@@ -343,3 +331,15 @@ MonoBehaviour:
   amount: 0.00915
   frequency: 27.4
   smooth: 10
+--- !u!114 &3040668439738423195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061539335792621680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063631a06f2e3614bb1eb70ab9d3ac13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

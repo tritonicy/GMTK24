@@ -16,6 +16,7 @@ public class HeadBobbing : MonoBehaviour
     }
 
     private void Update() {
+        if(!FindObjectOfType<PlayerMovement>().isControlsActive) return;
         CheckForHeadbobTrigger();
         StopHeadBob();
     }
