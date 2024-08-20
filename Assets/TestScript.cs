@@ -8,16 +8,22 @@ using UnityEngine.AI;
 public class TestScript : MonoBehaviour
 {
 
-    [SerializeField] NavMeshData meshData;
+    [SerializeField] NavMeshData firstMeshData;
+    public static TestScript instance;
 
-    private void Awake()
-    {
 
-    }
     private void Start()
+    {
+        instance = this;
+        GetComponent<NavMeshSurface>().navMeshData = firstMeshData;
+        NavMesh.AddNavMeshData(firstMeshData);
+    }
+
+    public void changeMeshData(NavMeshData meshData)
     {
         GetComponent<NavMeshSurface>().navMeshData = meshData;
         NavMesh.AddNavMeshData(meshData);
     }
+
 
 }

@@ -87,7 +87,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  attackRange: 15
+  attackRange: 6
   projectilePrefab: {fileID: 1931817187903157181, guid: fab012ac201d2f84e8574c2e197e1df2,
     type: 3}
   bulletPos: {fileID: 7211669092634716308}
