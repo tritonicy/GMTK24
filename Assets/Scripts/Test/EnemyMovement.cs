@@ -21,6 +21,7 @@ public class EnemyMovement : MonoBehaviour
     private float initialAttackRange;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] public Transform bulletPos;
+    private float bulletSpeed;
     int enemyLayer = 1 << 10;
 
     private void Awake()
@@ -80,8 +81,9 @@ public class EnemyMovement : MonoBehaviour
         if(isCloseRange) {
             agent.SetDestination(new Vector3(playerTransform.position.x, this.transform.position.y, playerTransform.position.z));
             if(isInAttackRange) {
-                Debug.Log("Patladim");
+                this.gameObject.GetComponentInChildren<EnemyShake>().Shake(0.1f,0.2f);
                 playerTransform.GetComponent<PlayerProperties>().TakeDamage(10);
+                GameObject.Find("Hand").GetComponent<CameraShake>().Shake(0.2f,0.4f);
                 Destroy(this.gameObject);
             }
             return;
