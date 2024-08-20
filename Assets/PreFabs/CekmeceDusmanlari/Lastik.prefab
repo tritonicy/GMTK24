@@ -80,7 +80,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  camTransform: {fileID: 0}
   isCloseRange: 1
   playerLayer:
     serializedVersion: 2
@@ -100,7 +99,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4460056345046106316}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -1372625422
   m_Radius: 0.5
   m_Speed: 7
   m_Acceleration: 8
@@ -155,6 +154,7 @@ GameObject:
   - component: {fileID: 8917503410456663881}
   - component: {fileID: 3503543731862231949}
   - component: {fileID: 6426963256934583735}
+  - component: {fileID: 2005826163327249360}
   m_Layer: 10
   m_Name: Gameobject
   m_TagString: Enemy
@@ -261,7 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c3c6f48e45f474180f82247581ed0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camTransform: {fileID: 0}
 --- !u!114 &6426963256934583735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,3 +276,15 @@ MonoBehaviour:
   health: 100
   experienceItemPrefab: {fileID: 1123216612374423059, guid: 27b5514b7759112438d2e40e0fc6e0e4,
     type: 3}
+--- !u!114 &2005826163327249360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6541452421848879606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8161606f02609114cbfb85b9a627607c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

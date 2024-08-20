@@ -11,7 +11,6 @@ public class CameraShake : MonoBehaviour
     private void Awake() {
         Instance = this;
     }
-
     public void Shake(float duration, float magnitude) {
         transform.DOShakePosition(duration, magnitude);
         mainCam.DOShakePosition(duration, magnitude);
