@@ -8,6 +8,9 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] public Rigidbody rb;
     [SerializeField] int damage;
 
+    [SerializeField] public float duration = 0.5f;
+    [SerializeField] public float magnitude = 0.2f;
+
     void Start()
     {
         rb.AddForce(transform.up * 4000f);
@@ -17,7 +20,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         {
             PlayerProperties.Instance.TakeDamage(damage);
-            CameraShake.Instance.Shake(0.1f,0.2f);
+            CameraShake.Instance.Shake(duration, magnitude);
         }
         Destroy(this.gameObject);
     }

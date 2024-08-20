@@ -2161,6 +2161,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e316827f05f087428b153fac5b966b3, type: 3}
+--- !u!1 &1304709775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 70101603531617096, guid: 5d4d91fae7d36274c80418c85c260392,
+    type: 3}
+  m_PrefabInstance: {fileID: 1421301366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1410332281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2253,6 +2259,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1083459996548574947, guid: 5d4d91fae7d36274c80418c85c260392,
+        type: 3}
+      propertyPath: amount
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083459996548574947, guid: 5d4d91fae7d36274c80418c85c260392,
+        type: 3}
+      propertyPath: smooth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083459996548574947, guid: 5d4d91fae7d36274c80418c85c260392,
+        type: 3}
+      propertyPath: frequency
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1368192292991560468, guid: 5d4d91fae7d36274c80418c85c260392,
         type: 3}
       propertyPath: m_Name
@@ -2318,10 +2339,15 @@ PrefabInstance:
       propertyPath: cameraPos
       value: 
       objectReference: {fileID: 1102812059}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3301410866657779126, guid: 5d4d91fae7d36274c80418c85c260392, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2061539335792621680, guid: 5d4d91fae7d36274c80418c85c260392,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1520558772}
   m_SourcePrefab: {fileID: 100100000, guid: 5d4d91fae7d36274c80418c85c260392, type: 3}
 --- !u!1 &1427706255
 GameObject:
@@ -2651,6 +2677,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1520482558}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1520558767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2061539335792621680, guid: 5d4d91fae7d36274c80418c85c260392,
+    type: 3}
+  m_PrefabInstance: {fileID: 1421301366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1520558772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520558767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063631a06f2e3614bb1eb70ab9d3ac13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 1304709775}
 --- !u!1001 &1543162180
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class CameraShake : MonoBehaviour
     }
 
     public void Shake(float duration, float magnitude) {
-        transform.DOShakePosition(duration, magnitude);
+        transform.DOShakePosition(0.5, 0.2);
     }
     public void ChangeFov(int endFov) {
         GetComponent<Camera>().DOFieldOfView(endFov, 0.25f);

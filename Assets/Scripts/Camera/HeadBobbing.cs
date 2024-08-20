@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class HeadBobbing : MonoBehaviour
 {
-    [Range(0.001f, 0.01f)] public float amount = 0.002f;
-    [Range(1f,30f)] public float frequency = 10f;
+    [Range(0.001f, 0.08f)] public float amount = 0.002f;
+    [Range(1f,100f)] public float frequency = 10f;
     [Range(10f,100f)] public float smooth = 10f;
     Vector3 startPos;
 
