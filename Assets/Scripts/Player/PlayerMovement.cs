@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Hidden Variables")]
     [HideInInspector] public float moveSpeed;
     [HideInInspector] public bool isGrounded;
+    private int playerLayer = 1 << 8;
     [Header("Shooting")]
     [SerializeField] GameObject normalProjectilePrefab;
     [SerializeField] GameObject heavyProjectilePrefab;
@@ -61,13 +62,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float timeBetweenHeavy;
     private Vector3 initialnormalBulletScale = new Vector3(0.1f,0.1f,0.1f);
     private Vector3 initialHeavyBulletScale = new Vector3(0.4f,0.4f,0.4f);
-
+    [Header("Other")]
+    [SerializeField] public GameManager gameManager;
+    [SerializeField] public GameObject panel;
+    public bool isControlsActive = true;
 
     
     //ziplama updatede calisiyor ilerde fixedupdateye almak gerekebilir.
+    private void Awake() {
+        gameManager = FindObjectOfType<GameManager>();
+    }
     private void Start()
     {
-
+        playerLayer = ~playerLayer;
         initialRunSpeed = runSpeed;
         initialDashSpeed = dashSpeed;
         initialDashForce = dashForce;
@@ -80,9 +87,10 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         playerStartingHalfHeight = this.transform.localScale.y;
+        gameManager.OnMenuOpen += HandleMenu;
     }
     private void Update()
-    {       
+    {   
         GatherInput();
         CheckGrounded();
 
@@ -110,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
                 rb.drag = groundDrag;
             }
         }
-
     }
     private void FixedUpdate()
     {
@@ -120,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void GatherInput()
     {
+        if(!isControlsActive) return;
         xMovement = Input.GetAxisRaw("Horizontal");
         yMovement = Input.GetAxisRaw("Vertical");
 
@@ -146,13 +154,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Shoot(GameObject projectilePrefab, float timeBetween, Vector3 initialBulletScale)
     {
+        if(!isControlsActive) return;
         readyToShoot = false;
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, cam.rotation);
         projectile.GetComponent<Transform>().localScale = initialBulletScale;
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
         Vector3 forceDir = cam.transform.forward;
-        if(Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 500f)) {
+        if(Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 500f, playerLayer)) {
             forceDir = (hit.point - attackPoint.position).normalized;
         }
         rb.AddForce(forceDir * 100f, ForceMode.Impulse);
@@ -211,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
 
         forceToApply = lookDir * dashForce + playerCam.up * upwardDashSpeed;
         CameraShake.Instance.ChangeFov(75);
-        
+
         Invoke(nameof(DelayedForceApply), 0.025f);
         Invoke(nameof(ResetDash), dashDuration);
     }
@@ -260,5 +269,22 @@ public class PlayerMovement : MonoBehaviour
         airDrag = initialAirDrag * GetComponent<PlayerProperties>().newScale.y;
         fallMultiplier = initialFallMultiplier * GetComponent<PlayerProperties>().newScale.y;
         lowJumpMultiplier = initialLowJumpMultiplier * GetComponent<PlayerProperties>().newScale.y;
+    }
+
+    public void HandleMenu() {
+        if(panel.gameObject.active) {
+            panel.gameObject.SetActive(false);
+            EnableControls();
+        }
+        else{
+            panel.gameObject.SetActive(true);
+            DisableControls();
+        }
+    }
+    public void DisableControls() {
+        isControlsActive = false;
+    }
+    public void EnableControls() {
+        isControlsActive = true;
     }
 }
