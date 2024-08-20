@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public GameManager gameManager;
     [SerializeField] public GameObject panel;
     public bool isControlsActive = true;
+    [SerializeField] Animator animController;
 
     
     //ziplama updatede calisiyor ilerde fixedupdateye almak gerekebilir.
@@ -165,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
             forceDir = (hit.point - attackPoint.position).normalized;
         }
         rb.AddForce(forceDir * 100f, ForceMode.Impulse);
+        animController.SetTrigger("Shoot");
 
         Invoke(nameof(ResetAttack), timeBetween);
     }

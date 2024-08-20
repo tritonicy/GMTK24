@@ -226,7 +226,7 @@ MonoBehaviour:
   sizeBounds2: {x: 0, y: 0, z: 0}
   centerPoint3: {x: 0, y: 0, z: 0}
   sizeBounds3: {x: 0, y: 0, z: 0}
-  spawnRate: 0.1
+  spawnRate: 0.25
   firstAreaPrefabs:
   - {fileID: 4460056345046106316, guid: 8771a71358093da429775cb9a1e526df, type: 3}
   - {fileID: 3123511502945749489, guid: 2e316827f05f087428b153fac5b966b3, type: 3}
@@ -1756,6 +1756,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 617167702074001470}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1892299266 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8978483696103755422, guid: 5d4d91fae7d36274c80418c85c260392,
+    type: 3}
+  m_PrefabInstance: {fileID: 585604564435507481}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2008607272 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6813163342570314564, guid: 5d4d91fae7d36274c80418c85c260392,
@@ -1950,6 +1956,11 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 243087728}
+    - target: {fileID: 2099925908061360752, guid: aed26cb781738154c9428f98d74c1c60,
+        type: 3}
+      propertyPath: animController
+      value: 
+      objectReference: {fileID: 1892299266}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
