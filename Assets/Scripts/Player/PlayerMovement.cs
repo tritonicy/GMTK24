@@ -59,8 +59,10 @@ public class PlayerMovement : MonoBehaviour
     private bool readyToShoot = true;
     [SerializeField] float timeBetweenNormal;
     [SerializeField] float timeBetweenHeavy;
-    private Vector3 initialnormalBulletScale = new Vector3(0.1f,0.1f,0.1f);
-    private Vector3 initialHeavyBulletScale = new Vector3(0.4f,0.4f,0.4f);
+    [SerializeField] public Vector3 normalBulletScale = new Vector3(0.1f,0.1f,0.1f);
+    private Vector3 initialNormalBulletScale;
+    [SerializeField] Vector3 HeavyBulletScale = new Vector3(0.4f,0.4f,0.4f);
+
     [Header("Other")]
     [SerializeField] public GameManager gameManager;
     [SerializeField] public GameObject panel;
@@ -81,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         initialAirDrag = airDrag;
         initialFallMultiplier = fallMultiplier;
         initialLowJumpMultiplier = lowJumpMultiplier;
+        initialNormalBulletScale = normalBulletScale;
         
         desiredMoveSpeed = runSpeed;
         rb = GetComponent<Rigidbody>();
@@ -106,10 +109,10 @@ public class PlayerMovement : MonoBehaviour
             Dash();
         }
         if(Input.GetMouseButton(0) && readyToShoot) {
-            Shoot(normalProjectilePrefab, timeBetweenNormal,initialnormalBulletScale);
+            Shoot(normalProjectilePrefab, timeBetweenNormal, normalBulletScale);
         }
         if(Input.GetMouseButton(1) && readyToShoot) {
-            Shoot(heavyProjectilePrefab, timeBetweenHeavy,initialHeavyBulletScale);
+            Shoot(heavyProjectilePrefab, timeBetweenHeavy, normalBulletScale);
         }
 
         if(isDashing) {
@@ -267,10 +270,17 @@ public class PlayerMovement : MonoBehaviour
     private void DelayedForceApply() {
         rb.AddForce(forceToApply, ForceMode.Impulse);
     }
-    public void GrowBulletscale(Vector3 amount) {
-        initialnormalBulletScale += amount;
-        initialHeavyBulletScale += amount;
+
+  //  public void GrowBulletscale(Vector3 amount) {
+  //      normalBulletScale += amount;
+  //      normalBulletScale += amount;
+  //  }
+
+    public void GrowBulletscale()
+    {
+        normalBulletScale = initialNormalBulletScale * GetComponent<PlayerProperties>().newScale.y;
     }
+
 
     public void GrowSpeed() {
         

@@ -16,10 +16,13 @@ public class StageTrigger : MonoBehaviour
     {
         if (DeadZone && other.CompareTag("Player"))
         {
-            TestScript.instance.changeMeshData(meshData);
             if (playerPivot.transform.localScale.y < RequiredHeight)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+            else
+            {
+                TestScript.instance.changeMeshData(meshData);
             }
         }
         else if (!DeadZone && other.CompareTag("Player"))

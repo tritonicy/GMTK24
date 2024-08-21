@@ -14,6 +14,7 @@ public class PlayerProperties : MonoBehaviour
     private readonly int EXPTOGET = 100;
     [HideInInspector] public int currentExperience = 0;
     public int health;
+    [Range(1f, 2f)]
     [SerializeField] private float growAmountPerKill;
     private bool isGrowing;
     float elapsedTime;
@@ -83,7 +84,7 @@ public class PlayerProperties : MonoBehaviour
     public void StartGrow() {
         isGrowing = true;
         firstScale = pivot.localScale;
-        newScale = new Vector3(pivot.localScale.x + growAmountPerKill / 2, newScale.y + growAmountPerKill, pivot.localScale.z + growAmountPerKill / 2);
+        newScale = new Vector3(pivot.localScale.x * (growAmountPerKill / 2), newScale.y * growAmountPerKill, pivot.localScale.z * (growAmountPerKill / 2));
     }
     public void EndGrow() {
         isGrowing = false;

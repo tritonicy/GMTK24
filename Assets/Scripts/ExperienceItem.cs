@@ -25,7 +25,7 @@ public class ExperienceItem : MonoBehaviour
             GiveHealth(amountToHeal);
             GrowPlayer();
             GrowPlayerStats();
-            // GrowBullets(); 
+            GrowBullets(); 
             GrowEnemyRanges();
             SFXManager.PlaySoundFX(SoundType.YerdenItemAlma);
             Destroy(this.gameObject);
@@ -54,6 +54,7 @@ public class ExperienceItem : MonoBehaviour
     private void GrowBullets()
     {
         // PlayerMovement.Instance.GrowBulletscale(new Vector3(0.2f,0.2f,0.2f));
+        playerMovement.GrowBulletscale();
     }
 
     private void GrowPlayer()

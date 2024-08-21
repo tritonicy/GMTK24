@@ -16126,7 +16126,7 @@ PrefabInstance:
     - target: {fileID: 1236109914678985540, guid: aed26cb781738154c9428f98d74c1c60,
         type: 3}
       propertyPath: growAmountPerKill
-      value: 0.08
+      value: 1.135
       objectReference: {fileID: 0}
     - target: {fileID: 1393510774296712988, guid: aed26cb781738154c9428f98d74c1c60,
         type: 3}
@@ -23176,7 +23176,7 @@ GameObject:
   - component: {fileID: 1359432668}
   - component: {fileID: 1359432670}
   - component: {fileID: 1359432669}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SecodTriggerDeadZone
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -23212,7 +23212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeadZone: 1
   playerPivot: {fileID: 465994966}
-  RequiredHeight: 3
+  RequiredHeight: 1.5
   meshData: {fileID: 23800000, guid: 019c3decf7a754f4cb9c05544bb08e14, type: 2}
 --- !u!65 &1359432670
 BoxCollider:
@@ -27122,7 +27122,7 @@ GameObject:
   - component: {fileID: 1602455532}
   - component: {fileID: 1602455534}
   - component: {fileID: 1602455533}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: FirstTrigger
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
