@@ -35,7 +35,8 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public Rigidbody rb;
     [Header("Jump")]
     [SerializeField] LayerMask groundLayer;
-    private float playerStartingHalfHeight;
+    private float initialHalfHeight;
+    private float halfHeight;
     private bool readyToJump = true;
     [SerializeField] public float jumpForce;
     private float initialJumpForce;
@@ -56,19 +57,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject heavyProjectilePrefab;
     [SerializeField] Transform cam;
     [SerializeField] Transform attackPoint;
+    [SerializeField] float shotSpeed = 100f;
+    private float initialShotSpeed;
     private bool readyToShoot = true;
     [SerializeField] float timeBetweenNormal;
     [SerializeField] float timeBetweenHeavy;
     [SerializeField] public Vector3 normalBulletScale = new Vector3(0.1f,0.1f,0.1f);
+    [SerializeField] public int normalBulletDamage = 20;
+    [SerializeField] public int heavyBulletDamage = 40;
+
     private Vector3 initialNormalBulletScale;
     [SerializeField] Vector3 HeavyBulletScale = new Vector3(0.4f,0.4f,0.4f);
-
     [Header("Other")]
     [SerializeField] public GameManager gameManager;
     [SerializeField] public GameObject panel;
     public bool isControlsActive = true;
     [SerializeField] Animator animController;
-    [SerializeField] Animator playerAnimator;    
+    [SerializeField] Animator playerAnimator;
     //ziplama updatede calisiyor ilerde fixedupdateye almak gerekebilir.
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
@@ -84,37 +89,44 @@ public class PlayerMovement : MonoBehaviour
         initialFallMultiplier = fallMultiplier;
         initialLowJumpMultiplier = lowJumpMultiplier;
         initialNormalBulletScale = normalBulletScale;
+        initialShotSpeed = shotSpeed;
+        halfHeight = GameObject.Find("PlayerObj").transform.localScale.y;
+        initialHalfHeight = halfHeight;
         
         desiredMoveSpeed = runSpeed;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        playerStartingHalfHeight = this.transform.localScale.y;
         gameManager.OnMenuOpen += HandleMenu;
     }
     private void Update()
     {   
         GatherInput();
         CheckGrounded();
-        if(rb.velocity.magnitude > 0.1f) {
+        // walking check
+        if((rb.velocity.x > 0.1f || rb.velocity.z > 0.1f) && isGrounded) {
+            Debug.Log("Yuruyorum meen");
             playerAnimator.SetBool("isWalking", true);
         }
-        playerAnimator.SetBool("isWalking", false);
+        else playerAnimator.SetBool("isWalking", false);
         
-
+        // havadaysa drag ekle
         if (isGrounded && !isDashing) rb.drag = groundDrag;
         else rb.drag = 0f;
 
+        // dash atarken movement kitleme
         if(Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) {
             isMoveLocked = true;
             Dash();
         }
+        //normal ve heavy attack
         if(Input.GetMouseButton(0) && readyToShoot) {
-            Shoot(normalProjectilePrefab, timeBetweenNormal, normalBulletScale);
+            Shoot(normalProjectilePrefab, timeBetweenNormal, normalBulletScale,normalBulletDamage);
         }
         if(Input.GetMouseButton(1) && readyToShoot) {
-            Shoot(heavyProjectilePrefab, timeBetweenHeavy, normalBulletScale);
+            Shoot(heavyProjectilePrefab, timeBetweenHeavy, normalBulletScale, heavyBulletDamage);
         }
 
+        // dash bitirme
         if(isDashing) {
             moveLockTimeCounter += Time.deltaTime;
             if(moveLockTimeCounter >= moveLockTimer) {
@@ -138,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         xMovement = Input.GetAxisRaw("Horizontal");
         yMovement = Input.GetAxisRaw("Vertical");
 
+        //jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && readyToJump)
         {
             readyToJump = false;
@@ -159,20 +172,21 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime * 2f * airDrag, ForceMode.Force);
         }
     }
-    private void Shoot(GameObject projectilePrefab, float timeBetween, Vector3 initialBulletScale)
+    private void Shoot(GameObject projectilePrefab, float timeBetween, Vector3 initialBulletScale, int projectileDamage)
     {
         if(!isControlsActive) return;
         readyToShoot = false;
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, cam.rotation);
         SFXManager.PlaySoundFX(SoundType.PlayerAttack);
         projectile.GetComponent<Transform>().localScale = initialBulletScale;
+        projectile.GetComponent<PlayerProjectile>().setDamage(projectileDamage);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
         Vector3 forceDir = cam.transform.forward;
         if(Physics.Raycast(cam.position, cam.forward, out RaycastHit hit, 500f, playerLayer)) {
             forceDir = (hit.point - attackPoint.position).normalized;
         }
-        rb.AddForce(forceDir * 100f, ForceMode.Impulse);
+        rb.AddForce(forceDir * shotSpeed, ForceMode.Impulse);
         animController.SetTrigger("Shoot");
 
         Invoke(nameof(ResetAttack), timeBetween);
@@ -184,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckGrounded()
     {
-        isGrounded = Physics.Raycast(this.transform.position, Vector3.down, playerStartingHalfHeight + 0.2f, groundLayer);
+        isGrounded = Physics.Raycast(this.transform.position, Vector3.down, halfHeight + 0.2f, groundLayer);
     }
 
     private void SpeedControl()
@@ -271,19 +285,12 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(forceToApply, ForceMode.Impulse);
     }
 
-  //  public void GrowBulletscale(Vector3 amount) {
-  //      normalBulletScale += amount;
-  //      normalBulletScale += amount;
-  //  }
-
     public void GrowBulletscale()
     {
         normalBulletScale = initialNormalBulletScale * GetComponent<PlayerProperties>().newScale.y;
     }
 
-
     public void GrowSpeed() {
-        
         runSpeed = initialRunSpeed * GetComponent<PlayerProperties>().newScale.y;
     }
     public void GrowDashSpeed() {
@@ -297,9 +304,16 @@ public class PlayerMovement : MonoBehaviour
         fallMultiplier = initialFallMultiplier * GetComponent<PlayerProperties>().newScale.y;
         lowJumpMultiplier = initialLowJumpMultiplier * GetComponent<PlayerProperties>().newScale.y;
     }
+    public void GrowHeight() {
+        halfHeight = initialHalfHeight * GetComponent<PlayerProperties>().newScale.y;
+    }
+
+    public void GrowShotSpeed() {
+        shotSpeed = initialShotSpeed * GetComponent<PlayerProperties>().newScale.y;
+    }
 
     public void HandleMenu() {
-        if(panel.gameObject.active) {
+        if(panel.gameObject.activeSelf) {
             panel.gameObject.SetActive(false);
             EnableControls();
         }
@@ -316,7 +330,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Walk() {
-        int randInt = UnityEngine.Random.Range(1,3);
+        int randInt = UnityEngine.Random.Range(1,4);
         switch(randInt) {
             case 1:
                 SFXManager.PlaySoundFX(SoundType.Walk1);
@@ -329,4 +343,5 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
     }
+
 }

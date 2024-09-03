@@ -147,3 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experience: 20
+  amountToHeal: 10
+  yAxisGrowAmount: 1.1
+  xzAxisGrowAmount: 1.08

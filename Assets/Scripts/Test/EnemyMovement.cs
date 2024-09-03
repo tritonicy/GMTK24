@@ -21,12 +21,16 @@ public class EnemyMovement : MonoBehaviour
     private float initialAttackRange;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] public Transform bulletPos;
-    private float bulletSpeed;
+    [SerializeField] float bulletSpeed = 100;
+    private float initialBulletSpeed;
+    private Vector3 newMovePos;
     int enemyLayer = 1 << 10;
+    int projectileLayer = 1 << 12;
+    int excludeLayer;
 
     private void Awake()
     {
-        enemyLayer = ~enemyLayer;
+        excludeLayer = projectileLayer | enemyLayer;
         agent = GetComponent<NavMeshAgent>();
         camTransform = GameObject.Find("Orientation").transform;
         playerTransform = FindObjectOfType<PlayerMovement>().gameObject.transform;
@@ -37,7 +41,9 @@ public class EnemyMovement : MonoBehaviour
         else runAwayRange = attackRange / 2;
 
         initialAttackRange = attackRange;
+        initialBulletSpeed = bulletSpeed;
         GrowAttackRange();
+        GrowShotSpeed();
     }
 
     private void Update()
@@ -59,12 +65,11 @@ public class EnemyMovement : MonoBehaviour
             Attack();
         }
     }
-
-    private void RunAway()
+        private void RunAway()
     {
         Vector3 differenceVector = new Vector3(this.transform.position.x - playerTransform.position.x, this.transform.position.y, this.transform.position.z - playerTransform.position.z).normalized * (runAwayRange + 1);
         bool isValidMove = false;
-        Vector3 newMovePos = new Vector3(999f, 999f, 999f);
+        newMovePos = new Vector3(999f, 999f, 999f);
         while (!isValidMove)
         {
             newMovePos = new Vector3(this.transform.position.x + differenceVector.x +
@@ -96,11 +101,12 @@ public class EnemyMovement : MonoBehaviour
 
         Vector3 distanceVector = camTransform.position - transform.position;
         Ray ray = new Ray(transform.position, distanceVector);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity, enemyLayer))
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, Mathf.Infinity,~excludeLayer))
         {
             if (raycastHit.collider.gameObject.tag != "Player")
             {
                 agent.SetDestination(new Vector3(playerTransform.position.x, this.transform.position.y, playerTransform.position.z));
+                Debug.Log((raycastHit.collider.gameObject.name));
             }
             else
             {
@@ -109,7 +115,9 @@ public class EnemyMovement : MonoBehaviour
                     StopChase();
                     isAttacking = true;
                     Quaternion rotationVector = GetComponentInChildren<MeshCollider>().gameObject.transform.rotation;
-                    Rigidbody rb = Instantiate(projectilePrefab, bulletPos.position, rotationVector).GetComponent<Rigidbody>();
+                    GameObject bullet = Instantiate(projectilePrefab, bulletPos.position, Quaternion.identity);
+                    Vector3 shotVector = playerTransform.position - bulletPos.position; 
+                    bullet.GetComponent<Rigidbody>().AddForce(shotVector.normalized * bulletSpeed, ForceMode.Impulse);
 
                     Invoke(nameof(ResetAttack), timeBetweenAttacks);
                 }
@@ -136,12 +144,25 @@ public class EnemyMovement : MonoBehaviour
         isInRunningAway = false;
     }
 
-    public void GrowAttackRange(){
-        if(FindObjectOfType<PlayerProperties>().newScale.y == 0f) {
+    public void GrowAttackRange()
+    {
+        if (FindObjectOfType<PlayerProperties>().newScale.y == 0f)
+        {
             attackRange = initialAttackRange;
         }
-        else{
-        attackRange = initialAttackRange * FindObjectOfType<PlayerProperties>().newScale.y;
+        else
+        {
+            attackRange = initialAttackRange * FindObjectOfType<PlayerProperties>().newScale.y;
+        }
+    }
+    public void GrowShotSpeed() {
+        if (FindObjectOfType<PlayerProperties>().newScale.y == 0f)
+        {
+            bulletSpeed = initialBulletSpeed;
+        }
+        else
+        {
+            bulletSpeed = initialBulletSpeed * FindObjectOfType<PlayerProperties>().newScale.y;
         }
     }
 }

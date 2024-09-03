@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
-    [SerializeField] int damage;
+    private int damage;
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 
     private void OnTriggerEnter(Collider other)
     {

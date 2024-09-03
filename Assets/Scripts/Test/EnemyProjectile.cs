@@ -7,23 +7,15 @@ public class EnemyProjectile : MonoBehaviour
 
     [SerializeField] public Rigidbody rb;
     [SerializeField] int damage;
-    public float initialBulletSpeed = 4000f;
-    public float bulletSpeed = 4000f;
-    [SerializeField] public float duration = 0.5f;
-    [SerializeField] public float magnitude = 0.2f;
-
-    void Start()
-    {
-        initialBulletSpeed = bulletSpeed;
-        rb.AddForce(transform.up * bulletSpeed);
-    }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.gameObject.name);
         if(other.gameObject.tag == "Player")
         {
-            PlayerProperties.Instance.TakeDamage(damage);
-            CameraShake.Instance.Shake(duration, magnitude);
+    
+            other.gameObject.transform.parent.parent.GetComponent<PlayerProperties>().TakeDamage(damage);
+            CameraShake.Instance.Shake(0.5f, 0.2f);
         }
         Destroy(this.gameObject);
     }

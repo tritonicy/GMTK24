@@ -17,7 +17,6 @@ public class EnemyProperties : MonoBehaviour
         Invoke(nameof(ChangeColorToWhite), 0.025f);
 
         health -= damage;
-        Debug.Log("Dusmana vurdun");
         if(health <= 0 ) {
             KillYourself();
         }

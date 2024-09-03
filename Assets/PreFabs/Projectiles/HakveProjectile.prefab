@@ -273,10 +273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3673486091983203296}
   damage: 4
-  initialBulletSpeed: 8000
-  bulletSpeed: 8000
-  duration: 0.42
-  magnitude: 0.11
 --- !u!65 &3240870647268395371
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -296,5 +292,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 5.540164, z: 1}
-  m_Center: {x: 0, y: -2.270082, z: 0}
+  m_Size: {x: 11.368311, y: 0.98958087, z: 1}
+  m_Center: {x: -5.1841583, y: 0.0052098185, z: 0}

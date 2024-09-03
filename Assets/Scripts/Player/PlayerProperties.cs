@@ -7,15 +7,12 @@ using UnityEngine.UI;
 
 public class PlayerProperties : MonoBehaviour
 {
-    // burada bazilari instance bazilarid egil.
-    public static PlayerProperties Instance;
+    // burada bazilari instance bazilari degil.
     [SerializeField] Transform pivot;
+    public float SCALETOGET = 2;
     private int currentLevel = 0;
-    private readonly int EXPTOGET = 100;
-    [HideInInspector] public int currentExperience = 0;
     public int health;
     [Range(1f, 2f)]
-    [SerializeField] private float growAmountPerKill;
     private bool isGrowing;
     float elapsedTime;
     Vector3 firstScale;
@@ -23,13 +20,13 @@ public class PlayerProperties : MonoBehaviour
     [SerializeField] Slider slider;
 
     private void Update() {
-        if(currentExperience >= EXPTOGET) {
+        if(newScale.y >= SCALETOGET) {
             currentLevel++;
             switch (currentLevel) {
                 case 1:
                 Debug.Log("cekmece kirildi");
-                Debug.Log(currentExperience);
                 Debug.Log(currentLevel);
+                SCALETOGET = 6f;
                 break;
 
                 case 2:
@@ -40,16 +37,9 @@ public class PlayerProperties : MonoBehaviour
                 // boss gelecek
                 break;
             }
-            currentExperience = 0;
         }
     }
     private void Start() {
-        if(Instance == null) {
-            Instance = this;
-        }
-        else{
-            Destroy(this.gameObject);
-        }
         newScale = Vector3.one;
 
         slider.maxValue = health;
@@ -75,16 +65,14 @@ public class PlayerProperties : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-    public void GainExperience(int amount) {
-        currentExperience += amount;
-    
-        StartGrow();
+    public void GainExperience(float yAxisGrowAmount, float xzAxisGrowAmount) {    
+        StartGrow(yAxisGrowAmount, xzAxisGrowAmount);
         Invoke(nameof(EndGrow), 1f);
     }
-    public void StartGrow() {
+    public void StartGrow(float yAxisGrowAmount, float xzAxisGrowAmount) {
         isGrowing = true;
         firstScale = pivot.localScale;
-        newScale = new Vector3(pivot.localScale.x * (growAmountPerKill / 2), newScale.y * growAmountPerKill, pivot.localScale.z * (growAmountPerKill / 2));
+        newScale = new Vector3(pivot.localScale.x * xzAxisGrowAmount, newScale.y * yAxisGrowAmount, pivot.localScale.z * xzAxisGrowAmount);
     }
     public void EndGrow() {
         isGrowing = false;

@@ -24,6 +24,7 @@ public class HeadBobbing : MonoBehaviour
     private void CheckForHeadbobTrigger() {
         float inputMagnitude = new Vector3 (Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).magnitude;
         if(inputMagnitude > 0f) {
+            StopHeadBob();
             StartHeadbob();
         }
     }

@@ -22,13 +22,23 @@ public class SFXManager : MonoBehaviour
     private static SFXManager instance;
     private AudioSource audioSource;
 
-    private void Awake() {
-        instance = this;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
-    private void Start() {
+    private void Start()
+    {
         audioSource = GetComponent<AudioSource>();
     }
-    public static void PlaySoundFX(SoundType sound, float volume = 1) {
-        instance.audioSource.PlayOneShot(instance.SFXList[(int) sound], volume);
+    public static void SetVolume(float volume) {
+        instance.audioSource.volume = volume;
     }
+    public static void PlaySoundFX(SoundType sound, float volume = 1)
+    {
+        instance.audioSource.PlayOneShot(instance.SFXList[(int)sound], volume);
+    }
+
 }

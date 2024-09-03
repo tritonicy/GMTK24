@@ -215,7 +215,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82096992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13516bbc7b307df4eaaf6ce2923e997a, type: 3}
   m_Name: 
@@ -463,6 +463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Zimba
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340217447400679602, guid: 2e316827f05f087428b153fac5b966b3,
+        type: 3}
+      propertyPath: attackRange
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5115608188951391813, guid: 2e316827f05f087428b153fac5b966b3,
         type: 3}
@@ -1671,6 +1676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lastik
       objectReference: {fileID: 0}
+    - target: {fileID: 4460056345046106316, guid: 8771a71358093da429775cb9a1e526df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2151,6 +2161,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Silgi
       objectReference: {fileID: 0}
+    - target: {fileID: 1795650951890048593, guid: b9d75783f46319747991683a803275a4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4912567393667505085, guid: b9d75783f46319747991683a803275a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2386,6 +2401,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kopek
       objectReference: {fileID: 0}
+    - target: {fileID: 2209060916878846940, guid: 1ab0ba1b24260954298f8ebbbc8b0856,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5813635567571554098, guid: 1ab0ba1b24260954298f8ebbbc8b0856,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2521,6 +2541,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kahve
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248279073448661010, guid: d75a2ba3106fa73418fbc9747771bfcf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7096511410960978234, guid: d75a2ba3106fa73418fbc9747771bfcf,
         type: 3}
@@ -2778,6 +2803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kalemtiras
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188083346599673938, guid: f25488414b00b594d98bbff278e5f841,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class ExperienceItem : MonoBehaviour
 {
-    [SerializeField] int experience;
     private PlayerMovement playerMovement;
     private PlayerProperties playerProperties;
     private EnemyMovement[] enemyMovements;
     [SerializeField] int amountToHeal = 10;
+    [Range(1,2)] [SerializeField] private float yAxisGrowAmount;
+    [Range(1,2)] [SerializeField] private float xzAxisGrowAmount;
 
     private void Start() {
         playerMovement = FindObjectOfType<PlayerMovement>();
-        enemyMovements = FindObjectsOfType<EnemyMovement>();
         playerProperties = FindObjectOfType<PlayerProperties>();
     }
 
@@ -25,8 +25,9 @@ public class ExperienceItem : MonoBehaviour
             GiveHealth(amountToHeal);
             GrowPlayer();
             GrowPlayerStats();
-            GrowBullets(); 
+            GrowBullets();
             GrowEnemyRanges();
+            GrowShotSpeeds(); 
             SFXManager.PlaySoundFX(SoundType.YerdenItemAlma);
             Destroy(this.gameObject);
         }
@@ -39,6 +40,8 @@ public class ExperienceItem : MonoBehaviour
 
     private void GrowEnemyRanges()
     {
+        enemyMovements = FindObjectsOfType<EnemyMovement>();
+
         foreach(EnemyMovement enemy in enemyMovements) {
             enemy.GrowAttackRange();
         }
@@ -49,6 +52,7 @@ public class ExperienceItem : MonoBehaviour
         playerMovement.GrowJumpSpeed();
         playerMovement.GrowDashSpeed();
         playerMovement.GrowSpeed();
+        playerMovement.GrowHeight();
     }
 
     private void GrowBullets()
@@ -59,6 +63,14 @@ public class ExperienceItem : MonoBehaviour
 
     private void GrowPlayer()
     {
-        playerProperties.GainExperience(experience);
+        playerProperties.GainExperience(yAxisGrowAmount, xzAxisGrowAmount);
+    }
+
+    private void GrowShotSpeeds(){
+        playerMovement.GrowShotSpeed();
+        foreach (EnemyMovement enemy in enemyMovements)
+        {
+            enemy.GrowShotSpeed();
+        }
     }
 }
