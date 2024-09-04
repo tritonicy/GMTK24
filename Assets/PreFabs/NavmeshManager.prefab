@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 0
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
@@ -60,9 +60,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 11fcaf5f02f544d4cb1d0ef64d3782f6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9ea7060865231b7449e64f88ccdfa7b6, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &5749493179166837028
 MonoBehaviour:
@@ -76,4 +76,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beeebd2316ac7c4fb450e62fccc1c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshData: {fileID: 23800000, guid: 3cf11ade1753bfa42bd8eb0ca46b54f6, type: 2}
+  firstMeshData: {fileID: 0}

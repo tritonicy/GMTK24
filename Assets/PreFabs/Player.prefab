@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5049495428900916479}
   - component: {fileID: 2099925908061360752}
   - component: {fileID: 1236109914678985540}
-  - component: {fileID: 2417306817288075467}
+  - component: {fileID: 7347075519242478219}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -91,7 +91,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpForce: 10
-  jumpCooldown: 1
+  jumpCooldown: 0.5
   airDrag: 0.5
   fallMultiplier: 2.75
   lowJumpMultiplier: 2
@@ -115,7 +115,7 @@ MonoBehaviour:
   panel: {fileID: 0}
   isControlsActive: 1
   animController: {fileID: 0}
-  playerAnimator: {fileID: 2417306817288075467}
+  playerAnimator: {fileID: 7347075519242478219}
 --- !u!114 &1236109914678985540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   health: 1000
   newScale: {x: 0, y: 0, z: 0}
   slider: {fileID: 0}
---- !u!95 &2417306817288075467
+--- !u!95 &7347075519242478219
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

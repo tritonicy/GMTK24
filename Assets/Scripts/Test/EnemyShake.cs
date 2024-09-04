@@ -7,7 +7,6 @@ public class EnemyShake : MonoBehaviour
 {
     public void Shake(float duration, float magnitude)
     {
-        Debug.Log("shakin");
         transform.DOShakePosition(duration, magnitude);
     }
 }

@@ -26,10 +26,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float dashDuration;
     [SerializeField] public float moveLockTimer;
     private float moveLockTimeCounter;
-    private float desiredMoveSpeed;
-    private float lastDesiredMoveSpeed;
-    private bool isMoveSpeedChanged;
-    private bool keepMomentum;
     [SerializeField] float speedChangeFactor;
     [Header("Player Components")]
     [HideInInspector] public Rigidbody rb;
@@ -37,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     private float initialHalfHeight;
     private float halfHeight;
-    private bool readyToJump = true;
     [SerializeField] public float jumpForce;
     private float initialJumpForce;
     [SerializeField] public float jumpCooldown;
@@ -48,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float lowJumpMultiplier = 1.5f;
     private float initialLowJumpMultiplier;
     [HideInInspector] public bool isMoveLocked;
+    private float coyoteTimer = 0.2f;
+    private float coyoteTimeCounter;
+    private float jumpBufferTimer = 0.2f;
+    private float jumpBufferTimeCounter;
+
     [Header("Hidden Variables")]
     [HideInInspector] public float moveSpeed;
     [HideInInspector] public bool isGrounded;
@@ -65,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public Vector3 normalBulletScale = new Vector3(0.1f,0.1f,0.1f);
     [SerializeField] public int normalBulletDamage = 20;
     [SerializeField] public int heavyBulletDamage = 40;
-
     private Vector3 initialNormalBulletScale;
     [SerializeField] Vector3 HeavyBulletScale = new Vector3(0.4f,0.4f,0.4f);
     [Header("Other")]
@@ -93,7 +92,6 @@ public class PlayerMovement : MonoBehaviour
         halfHeight = GameObject.Find("PlayerObj").transform.localScale.y;
         initialHalfHeight = halfHeight;
         
-        desiredMoveSpeed = runSpeed;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         gameManager.OnMenuOpen += HandleMenu;
@@ -104,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
         CheckGrounded();
         // walking check
         if((rb.velocity.x > 0.1f || rb.velocity.z > 0.1f) && isGrounded) {
-            Debug.Log("Yuruyorum meen");
             playerAnimator.SetBool("isWalking", true);
         }
         else playerAnimator.SetBool("isWalking", false);
@@ -113,11 +110,6 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && !isDashing) rb.drag = groundDrag;
         else rb.drag = 0f;
 
-        // dash atarken movement kitleme
-        if(Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) {
-            isMoveLocked = true;
-            Dash();
-        }
         //normal ve heavy attack
         if(Input.GetMouseButton(0) && readyToShoot) {
             Shoot(normalProjectilePrefab, timeBetweenNormal, normalBulletScale,normalBulletDamage);
@@ -126,14 +118,18 @@ public class PlayerMovement : MonoBehaviour
             Shoot(heavyProjectilePrefab, timeBetweenHeavy, normalBulletScale, heavyBulletDamage);
         }
 
+        // dash atarken movement kitleme
+        if(Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) {
+            Dash();
+        }
         // dash bitirme
         if(isDashing) {
             moveLockTimeCounter += Time.deltaTime;
             if(moveLockTimeCounter >= moveLockTimer) {
                 moveLockTimeCounter = 0f;
                 CameraShake.Instance.ChangeFov(60);
-                isMoveLocked = false;
-                moveSpeed = runSpeed;
+                isDashing = false;
+                StartCoroutine(nameof(LerpDashToRunSpeed));
                 rb.drag = groundDrag;
             }
         }
@@ -150,12 +146,23 @@ public class PlayerMovement : MonoBehaviour
         xMovement = Input.GetAxisRaw("Horizontal");
         yMovement = Input.GetAxisRaw("Vertical");
 
-        //jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && readyToJump)
+
+        if(isGrounded) {
+            coyoteTimeCounter = coyoteTimer;
+        }
+        else{
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            jumpBufferTimeCounter = jumpBufferTimer;
+        }
+        else {
+            jumpBufferTimeCounter -= Time.deltaTime;
+        }
+        if (jumpBufferTimeCounter > 0 && coyoteTimeCounter > 0)
         {
-            readyToJump = false;
             Jump();
-            Invoke(nameof(ResetJump), jumpCooldown);
+            jumpBufferTimeCounter = 0f;
         }
     }
 
@@ -165,11 +172,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveVector = orientation.forward * yMovement + orientation.right * xMovement;
         if (isGrounded)
         {
-            rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime * 2f, ForceMode.Force);
+            rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime, ForceMode.Force);
         }
         else
         {
-            rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime * 2f * airDrag, ForceMode.Force);
+            rb.AddForce(moveVector.normalized * moveSpeed * Time.deltaTime * airDrag, ForceMode.Force);
         }
     }
     private void Shoot(GameObject projectilePrefab, float timeBetween, Vector3 initialBulletScale, int projectileDamage)
@@ -177,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
         if(!isControlsActive) return;
         readyToShoot = false;
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, cam.rotation);
-        SFXManager.PlaySoundFX(SoundType.PlayerAttack);
+        SFXManager.PlaySound(SoundType.PlayerAttack);
         projectile.GetComponent<Transform>().localScale = initialBulletScale;
         projectile.GetComponent<PlayerProjectile>().setDamage(projectileDamage);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
@@ -227,16 +234,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
+            coyoteTimeCounter = 0f;
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
-    private void ResetJump()
-    {
-        readyToJump = true;
-    }
     Vector3 forceToApply;
     private void Dash() {
-        keepMomentum = true;
         isDashing = true;
         Vector3 lookDir = CalculateDirection(orientation);
         moveSpeed = dashSpeed;
@@ -248,15 +251,15 @@ public class PlayerMovement : MonoBehaviour
         switch (randInt)
         {
             case 1:
-                SFXManager.PlaySoundFX(SoundType.Dash1);
+                SFXManager.PlaySound(SoundType.Dash1);
                 break;
             case 2:
-                SFXManager.PlaySoundFX(SoundType.Dash2);
+                SFXManager.PlaySound(SoundType.Dash2);
                 break;
         }
-
+        // rb.AddForce(forceToApply,ForceMode.Impulse);
         Invoke(nameof(DelayedForceApply), 0.025f);
-        Invoke(nameof(ResetDash), dashDuration);
+        // Invoke(nameof(ResetDash), dashDuration);
     }
 
     private Vector3 CalculateDirection(Transform playerCam)
@@ -329,17 +332,31 @@ public class PlayerMovement : MonoBehaviour
         isControlsActive = true;
     }
 
+    public IEnumerator LerpDashToRunSpeed() {
+        float time = 0f;
+        float difference = Math.Abs(dashSpeed - runSpeed);
+        float startVal = dashSpeed;
+
+        while(time < difference) {
+            moveSpeed = Mathf.Lerp(startVal, runSpeed, time / difference);
+            time += Time.deltaTime * 16666f;
+
+            yield return null;
+        }
+        moveSpeed = runSpeed;
+    }
+
     public void Walk() {
         int randInt = UnityEngine.Random.Range(1,4);
         switch(randInt) {
             case 1:
-                SFXManager.PlaySoundFX(SoundType.Walk1);
+                SFXManager.PlaySound(SoundType.Walk1, 0.4f);
                 break;
             case 2:
-                SFXManager.PlaySoundFX(SoundType.Walk2);
+                SFXManager.PlaySound(SoundType.Walk2, 0.4f);
                 break;
             case 3:
-                SFXManager.PlaySoundFX(SoundType.Walk3);
+                SFXManager.PlaySound(SoundType.Walk3, 0.4f);
                 break;
         }
     }

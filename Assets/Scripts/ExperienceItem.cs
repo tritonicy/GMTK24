@@ -28,9 +28,15 @@ public class ExperienceItem : MonoBehaviour
             GrowBullets();
             GrowEnemyRanges();
             GrowShotSpeeds(); 
-            SFXManager.PlaySoundFX(SoundType.YerdenItemAlma);
+            GrowHand();
+            // SFXManager.PlaySoundFX(SoundType.YerdenItemAlma);
             Destroy(this.gameObject);
         }
+    }
+
+    private void GrowHand()
+    {
+        GameObject.Find("HandHolder").transform.localScale = new Vector3(playerProperties.newScale.y,playerProperties.newScale.y,playerProperties.newScale.y);
     }
 
     private void GiveHealth(int amountToHeal)

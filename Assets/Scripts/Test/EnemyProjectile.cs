@@ -10,10 +10,8 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
         if(other.gameObject.tag == "Player")
         {
-    
             other.gameObject.transform.parent.parent.GetComponent<PlayerProperties>().TakeDamage(damage);
             CameraShake.Instance.Shake(0.5f, 0.2f);
         }
