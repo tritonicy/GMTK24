@@ -29,7 +29,7 @@ public class ExperienceItem : MonoBehaviour
             GrowEnemyRanges();
             GrowShotSpeeds(); 
             GrowHand();
-            // SFXManager.PlaySoundFX(SoundType.YerdenItemAlma);
+            SFXManager.PlaySound(SoundType.YerdenItemAlma);
             Destroy(this.gameObject);
         }
     }

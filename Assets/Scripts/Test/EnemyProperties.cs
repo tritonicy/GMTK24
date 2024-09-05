@@ -22,7 +22,7 @@ public class EnemyProperties : MonoBehaviour
         }
     }
     public void KillYourself() {
-        // SFXManager.PlaySoundFX(SoundType.KillEnemy);
+        SFXManager.PlaySound3D(SoundType.KillEnemy, this.transform.position);
         GameObject droppedItem = Instantiate(experienceItemPrefab, this.transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
 
         Destroy(this.transform.parent.gameObject);

@@ -59,3 +59,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6ffa1277c94b79c4db8bfed85bbb2622, type: 3}
   - soundType: 3
     clip: {fileID: 8300000, guid: 50215f71317d9e14988675a5dbd5e37a, type: 3}
+  - soundType: 6
+    clip: {fileID: 8300000, guid: df1be95daf6c95d4bb9a20c70a57dff3, type: 3}
+  - soundType: 7
+    clip: {fileID: 8300000, guid: 1273fb5032fbd1c4fb72d53a63bbbd06, type: 3}
+  - soundType: 8
+    clip: {fileID: 8300000, guid: 4625578012333904b9f4f778d5eb4173, type: 3}
+  - soundType: 9
+    clip: {fileID: 8300000, guid: 07964ed94e092c244a3ab7faf13f30b0, type: 3}

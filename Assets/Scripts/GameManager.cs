@@ -4,14 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameState{ 
+    PauseState,
+    PlayState
+}
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
-    public Action OnMenuOpen;
+    public static GameManager Instance;
+    public Action OnEscapePressed;
+    public GameState currentGameState = GameState.PlayState;
 
     private void Awake() {
-        if(instance == null) {
-            instance = this;
+        if(Instance == null) {
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else{
@@ -20,10 +25,14 @@ public class GameManager : MonoBehaviour
     }
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) {
-            OnMenuOpen?.Invoke();
+            Instance.OnEscapePressed?.Invoke();
         }
     }
     public void StartGameScene() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void SetGameState(GameState state) {
+        Instance.currentGameState = state;
     }
 }

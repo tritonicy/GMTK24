@@ -17,10 +17,11 @@ public class CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        if(!orientation.GetComponentInParent<PlayerMovement>().isControlsActive) {
-            EnableCursor();
-            return;
-        }
+        // if(GameManager.Instance.currentGameState == GameState.PauseState) {
+        //     EnableCursor();
+        //     return;
+        // }
+        // Debug.Log("aa");
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sens;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sens;
 
@@ -31,15 +32,10 @@ public class CameraMovement : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0,yRotation,0);
-        DisableCursor();
     }
-    public void DisableCursor() {
+    public void DisableCursor()
+    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }
-    public void EnableCursor() {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
     }
 }

@@ -106,7 +106,6 @@ public class EnemyMovement : MonoBehaviour
             if (raycastHit.collider.gameObject.tag != "Player")
             {
                 agent.SetDestination(new Vector3(playerTransform.position.x, this.transform.position.y, playerTransform.position.z));
-                Debug.Log((raycastHit.collider.gameObject.name));
             }
             else
             {
@@ -164,5 +163,9 @@ public class EnemyMovement : MonoBehaviour
         {
             bulletSpeed = initialBulletSpeed * FindObjectOfType<PlayerProperties>().newScale.y;
         }
+    }
+
+    private void StayPosition() {
+        agent.SetDestination(this.transform.position);
     }
 }

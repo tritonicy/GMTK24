@@ -68,15 +68,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 initialNormalBulletScale;
     [SerializeField] Vector3 HeavyBulletScale = new Vector3(0.4f,0.4f,0.4f);
     [Header("Other")]
-    [SerializeField] public GameManager gameManager;
-    [SerializeField] public GameObject panel;
-    public bool isControlsActive = true;
     [SerializeField] Animator animController;
     [SerializeField] Animator playerAnimator;
     //ziplama updatede calisiyor ilerde fixedupdateye almak gerekebilir.
-    private void Awake() {
-        gameManager = FindObjectOfType<GameManager>();
-    }
     private void Start()
     {
         playerLayer = ~playerLayer;
@@ -94,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
         
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        gameManager.OnMenuOpen += HandleMenu;
     }
     private void Update()
     {   
@@ -110,18 +103,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && !isDashing) rb.drag = groundDrag;
         else rb.drag = 0f;
 
-        //normal ve heavy attack
-        if(Input.GetMouseButton(0) && readyToShoot) {
-            Shoot(normalProjectilePrefab, timeBetweenNormal, normalBulletScale,normalBulletDamage);
-        }
-        if(Input.GetMouseButton(1) && readyToShoot) {
-            Shoot(heavyProjectilePrefab, timeBetweenHeavy, normalBulletScale, heavyBulletDamage);
-        }
 
-        // dash atarken movement kitleme
-        if(Input.GetKeyDown(KeyCode.LeftShift) && !isDashing) {
-            Dash();
-        }
         // dash bitirme
         if(isDashing) {
             moveLockTimeCounter += Time.deltaTime;
@@ -142,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void GatherInput()
     {
-        if(!isControlsActive) return;
+        if(GameManager.Instance.currentGameState == GameState.PauseState) return;
         xMovement = Input.GetAxisRaw("Horizontal");
         yMovement = Input.GetAxisRaw("Vertical");
 
@@ -164,6 +146,20 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             jumpBufferTimeCounter = 0f;
         }
+        //normal ve heavy attack
+        if (Input.GetMouseButton(0) && readyToShoot)
+        {
+            Shoot(normalProjectilePrefab, timeBetweenNormal, normalBulletScale, normalBulletDamage);
+        }
+        if (Input.GetMouseButton(1) && readyToShoot)
+        {
+            Shoot(heavyProjectilePrefab, timeBetweenHeavy, normalBulletScale, heavyBulletDamage);
+        }
+        // dash atarken movement kitleme
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing)
+        {
+            Dash();
+        }
     }
 
     private void MovePlayer()
@@ -181,7 +177,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Shoot(GameObject projectilePrefab, float timeBetween, Vector3 initialBulletScale, int projectileDamage)
     {
-        if(!isControlsActive) return;
         readyToShoot = false;
         GameObject projectile = Instantiate(projectilePrefab, attackPoint.position, cam.rotation);
         SFXManager.PlaySound(SoundType.PlayerAttack);
@@ -222,6 +217,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        int randInt = UnityEngine.Random.Range(1, 3);
+        switch (randInt)
+        {
+            case 1:
+                SFXManager.PlaySound(SoundType.Jump1);
+                break;
+            case 2:
+                SFXManager.PlaySound(SoundType.Jump2);
+                break;
+        }
+
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(this.transform.up * jumpForce, ForceMode.Impulse);
@@ -251,10 +257,10 @@ public class PlayerMovement : MonoBehaviour
         switch (randInt)
         {
             case 1:
-                SFXManager.PlaySound(SoundType.Dash1);
+                SFXManager.PlaySound(SoundType.Dash1, 1f);
                 break;
             case 2:
-                SFXManager.PlaySound(SoundType.Dash2);
+                SFXManager.PlaySound(SoundType.Dash2, 1f);
                 break;
         }
         // rb.AddForce(forceToApply,ForceMode.Impulse);
@@ -313,23 +319,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void GrowShotSpeed() {
         shotSpeed = initialShotSpeed * GetComponent<PlayerProperties>().newScale.y;
-    }
-
-    public void HandleMenu() {
-        if(panel.gameObject.activeSelf) {
-            panel.gameObject.SetActive(false);
-            EnableControls();
-        }
-        else{
-            panel.gameObject.SetActive(true);
-            DisableControls();
-        }
-    }
-    public void DisableControls() {
-        isControlsActive = false;
-    }
-    public void EnableControls() {
-        isControlsActive = true;
     }
 
     public IEnumerator LerpDashToRunSpeed() {

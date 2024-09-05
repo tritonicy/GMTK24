@@ -34,12 +34,13 @@ public class SFXManager : MonoBehaviour{
         }
     }
     
-    public static void PlaySound3D(SoundType sound, Vector3 position, float volume = 1) {
+    public static void PlaySound3D(SoundType sound, Vector3 position, float volume = 1, float startTimeStamp = 0f) {
         GameObject soundObject = new GameObject(sound.ToString());
         soundObject.transform.parent = Instance.transform;
         soundObject.transform.position = position;
         AudioSource audioSource = soundObject.AddComponent<AudioSource>();
         audioSource.volume = volume;
+        audioSource.time = startTimeStamp;
         audioSource.clip = Instance.clips.FirstOrDefault((clip) => clip.soundType == sound).clip;
         audioSource.maxDistance = 100f;
         audioSource.spatialBlend = 1f;
@@ -59,6 +60,7 @@ public class SFXManager : MonoBehaviour{
         Instance.audioSource.PlayOneShot(Instance.clips.FirstOrDefault((clip) => clip.soundType == sound).clip);
     }
 }
+
 [System.Serializable]
 public class AudioClips {
     public SoundType soundType;
