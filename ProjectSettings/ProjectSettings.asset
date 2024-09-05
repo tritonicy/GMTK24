@@ -931,11 +931,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 5a964790-8fb8-47b5-be7a-d9b9dffd4f7f
+  cloudProjectId: 501b9c20-d2a7-4eb6-aa20-f19ce9d13b6f
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GMTK24
-  organizationId: burakonurbey
+  projectName: GMTK2024
+  organizationId: fiyufiyu
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
