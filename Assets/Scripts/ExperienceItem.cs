@@ -8,6 +8,7 @@ public class ExperienceItem : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerProperties playerProperties;
     private EnemyMovement[] enemyMovements;
+    private EnemyProperties[] enemyProperties;
     [SerializeField] int amountToHeal = 10;
     [Range(1,2)] [SerializeField] private float yAxisGrowAmount;
     [Range(1,2)] [SerializeField] private float xzAxisGrowAmount;
@@ -29,9 +30,19 @@ public class ExperienceItem : MonoBehaviour
             GrowEnemyRanges();
             GrowShotSpeeds(); 
             GrowHand();
+            GrowExperienceItem();
             SFXManager.PlaySound(SoundType.YerdenItemAlma);
             Destroy(this.gameObject);
         }
+    }
+
+    private void GrowExperienceItem()
+    {
+        enemyProperties = FindObjectsOfType<EnemyProperties>();
+        foreach(EnemyProperties enemy in enemyProperties) {
+            enemy.GrowDroppedItem();
+        }
+
     }
 
     private void GrowHand()

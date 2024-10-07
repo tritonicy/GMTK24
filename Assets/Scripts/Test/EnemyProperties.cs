@@ -6,10 +6,16 @@ public class EnemyProperties : MonoBehaviour
 {
     public int health;
     [SerializeField] GameObject experienceItemPrefab;
+    private float initialExperinceItemScale;
+    private float experinceItemScale = 1;
     private MeshRenderer meshRenderer;
 
     private void Awake() {
         meshRenderer = GetComponent<MeshRenderer>();
+    }
+    private void Start() {
+        initialExperinceItemScale = experinceItemScale;
+        GrowDroppedItem();
     }
 
     public void TakeDamage(int damage) {
@@ -23,7 +29,9 @@ public class EnemyProperties : MonoBehaviour
     }
     public void KillYourself() {
         SFXManager.PlaySound3D(SoundType.KillEnemy, this.transform.position);
-        GameObject droppedItem = Instantiate(experienceItemPrefab, this.transform.position + new Vector3(0f,1f,0f), Quaternion.identity);
+        GameObject droppedItem = Instantiate(experienceItemPrefab, this.transform.position + new Vector3(0f,experinceItemScale,0f), Quaternion.identity);
+        droppedItem.transform.localScale = Vector3.one * experinceItemScale;
+        Debug.Log(droppedItem.transform.localScale);
 
         Destroy(this.transform.parent.gameObject);
     }
@@ -39,5 +47,16 @@ public class EnemyProperties : MonoBehaviour
     private void ChangeColorToWhite()
     {
         meshRenderer.material.color = Color.white;
+    }
+
+    public void GrowDroppedItem() {
+        if (FindObjectOfType<PlayerProperties>().newScale.y == 0f)
+        {
+            experinceItemScale = initialExperinceItemScale;
+        }
+        else
+        {
+            experinceItemScale = initialExperinceItemScale * FindObjectOfType<PlayerProperties>().newScale.y;
+        }
     }
 }

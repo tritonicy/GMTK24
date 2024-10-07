@@ -1,27 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
     [HideInInspector] public NavMeshAgent agent;
-    private float timeBetweenAttacks = 1f;
-    private Transform camTransform;
-    private Transform playerTransform;
-    [SerializeField] bool isCloseRange;
+    [Header("layers")]
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask groundLayer;
+    [Header("Attack Properties")]
+    [SerializeField] float bulletSpeed = 100;
+    [SerializeField] private float timeBetweenAttacks = 1f;
+    [SerializeField] private float attackRange;
+    [SerializeField] bool isCloseRange;
+    [Header("Other")]
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] public Transform bulletPos;
+    private Transform camTransform;
+    private Transform playerTransform;
     private bool isAttacking;
     private bool isInRunningAwayRange;
     private bool isInRunningAway = false;
     private float runAwayRange = 0f;
     private bool isInAttackRange;
-    [SerializeField] private float attackRange;
     private float initialAttackRange;
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] public Transform bulletPos;
-    [SerializeField] float bulletSpeed = 100;
     private float initialBulletSpeed;
     private Vector3 newMovePos;
     int enemyLayer = 1 << 10;
